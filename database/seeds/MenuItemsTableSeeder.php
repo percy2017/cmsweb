@@ -14,22 +14,21 @@ class MenuItemsTableSeeder extends Seeder
     public function run()
     {
         $menu = Menu::where('name', 'admin')->firstOrFail();
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.dashboard'),
-            'url'     => '',
-            'route'   => 'voyager.dashboard',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-boat',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 1,
-            ])->save();
-        }
+        // $menuItem = MenuItem::firstOrNew([
+        //     'menu_id' => $menu->id,
+        //     'title'   => __('voyager::seeders.menu_items.dashboard'),
+        //     'url'     => '',
+        //     'route'   => 'voyager.dashboard',
+        // ]);
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill([
+        //         'target'     => '_self',
+        //         'icon_class' => 'voyager-boat',
+        //         'color'      => null,
+        //         'parent_id'  => null,
+        //         'order'      => 1,
+        //     ])->save();
+        // }
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
@@ -171,6 +170,106 @@ class MenuItemsTableSeeder extends Seeder
                 'color'      => null,
                 'parent_id'  => null,
                 'order'      => 14,
+            ])->save();
+        }
+
+        // Menu Primary ----------------------------------------
+        $menu = Menu::where('name', 'primary')->firstOrFail();
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Features',
+            'url'     => '#',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Services',
+            'url'     => '#',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Contact',
+            'url'     => '#',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => null,
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
+
+
+        // Menu Social ----------------------------------------
+        $menu = Menu::where('name', 'social')->firstOrFail();
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'facebbok',
+            'url'     => '#',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fab fa-facebook-f',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 1,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'twitter',
+            'url'     => '#',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fab fa-twitter',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 2,
+            ])->save();
+        }
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'instagram',
+            'url'     => '#',
+            'route'   => null,
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'fab fa-instagram',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
             ])->save();
         }
     }

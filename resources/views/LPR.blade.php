@@ -853,7 +853,7 @@
 
     // MDB Lightbox Init
     $(function () {
-      $("#mdb-lightbox-ui").load("../mdb-addons/mdb-lightbox-ui.html");
+      $("#mdb-lightbox-ui").load("vendor/mdb/lgp/mdb-addons/mdb-lightbox-ui.html");
     });
 
         $('#myWP').floatingWhatsApp({

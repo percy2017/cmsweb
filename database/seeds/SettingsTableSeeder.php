@@ -62,9 +62,9 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'template',
-                'value'        => '',
+                'value'        => 'LPS',
                 'details'      => '',
-                'type'         => 'select_dropdown',
+                'type'         => 'text',
                 'order'        => 5,
                 'group'        => 'Site',
             ])->save();
@@ -192,7 +192,7 @@ class SettingsTableSeeder extends Seeder
           if (!$setting->exists) {
               $setting->fill([
                   'display_name' => 'Color',
-                  'value'        => '#62B6FE',
+                  'value'        => '#5991FB',
                   'details'      => '',
                   'type'         => 'text',
                   'order'        => 5,

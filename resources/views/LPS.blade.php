@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>{{ setting('site.title') }}</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -54,33 +54,50 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
       <div class="container">
-        <a class="navbar-brand" href="#"><strong>MDB</strong></a>
+        <a class="navbar-brand" href="#"><strong>{{ setting('site.title') }}</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
           aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
-            </li>
+            {{ menu('primary', 'layouts.partials.primary') }}
           </ul>
-          <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item">
-              <a class="nav-link waves-effect waves-light"><i class="fab fa-twitter"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect waves-light"><i class="fab fa-google-plus-g"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link waves-effect waves-light"><i class="fab fa-facebook-f"></i></a>
-            </li>
+          <ul class="navbar-nav ml-auto">
+            @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                  <a class="dropdown-item" href="/home">
+                                        Perfil
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Salir
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+
           </ul>
         </div>
       </div>
@@ -743,6 +760,7 @@
                       <i class="fas fa-star"> </i>
                       <i class="fas fa-star"> </i>
                       <i class="far fa-star"> </i>
+                      
                     </div>
                   </div>
                 </div>
@@ -779,23 +797,13 @@
 
           <!--Grid column-->
           <div class="col-12 col-md-5 text-left mb-md-0">
-            <h6 class="mb-0 white-text text-center text-md-left"><strong>Get connected with us on social
-                networks!</strong></h6>
+            <h6 class="mb-0 white-text text-center text-md-left"><strong>{{ setting('site.description') }}</strong></h6>
           </div>
           <!--Grid column-->
 
           <!--Grid column-->
           <div class="col-12 col-md-7 text-center text-md-right">
-            <!--Facebook-->
-            <a class="p-2 m-2 fa-lg fb-ic ml-0"><i class="fab fa-facebook-f white-text mr-lg-4"> </i></a>
-            <!--Twitter-->
-            <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-twitter white-text mr-lg-4"> </i></a>
-            <!--Google +-->
-            <a class="p-2 m-2 fa-lg gplus-ic"><i class="fab fa-google-plus-g white-text mr-lg-4"> </i></a>
-            <!--Linkedin-->
-            <a class="p-2 m-2 fa-lg li-ic"><i class="fab fa-linkedin-in white-text mr-lg-4"> </i></a>
-            <!--Instagram-->
-            <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-instagram white-text mr-lg-4"> </i></a>
+              {{ menu('social', 'layouts.partials.social') }}
           </div>
           <!--Grid column-->
 
@@ -805,7 +813,7 @@
     </div>
 
     <!--Footer Links-->
-    <div class="container mt-5 mb-4 text-center text-md-left">
+    {{--  <div class="container mt-5 mb-4 text-center text-md-left">
       <div class="row mt-3">
 
         <!--First column-->
@@ -852,15 +860,15 @@
         <!--/.Fourth column-->
 
       </div>
-    </div>
+    </div>  --}}
     <!--/.Footer Links-->
 
     <!-- Copyright-->
-    <div class="footer-copyright py-3 text-center">
+    {{--  <div class="footer-copyright py-3 text-center">
       <div class="container-fluid">
         © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
       </div>
-    </div>
+    </div>  --}}
     <!--/.Copyright -->
 
   </footer>
@@ -906,7 +914,7 @@
       headerTitle: '{{ setting('whatsapp.headerTitle') }}',
       headerColor: '{{ setting('whatsapp.color') }}',
       backgroundColor: '{{ setting('whatsapp.color') }}',
-      buttonImage: '<img src="{{ asset('storage/'.setting('whatsapp.buttonImage') ) }}" />',
+      buttonImage: '<img src="{{ Voyager::Image(setting('whatsapp.buttonImage' )) }}" />',
       position: '{{ setting('whatsapp.position') }}',
       autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
       size: '{{ setting('whatsapp.size') }}'

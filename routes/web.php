@@ -16,14 +16,37 @@ Route::get('/', function () {
     switch ($template) {
         case 'LPS':
             # code...
-            return view('welcome');
+            # landing Page SOfware
+            return view('LPS');
             break;
         case 'LPR':
             # code...
+            # landing Page Restorant
             return view('LPR');
         case 'LPM':
             # code...
+            # landing Page Medical
             return view('LPM');
+            break;
+        case 'LPH':
+            # code...
+            # landing Page Hotel
+            return view('LPH');
+            break;
+        case 'LPE':
+            # code...
+            # landing Page Eventos
+            return view('LPE');
+            break;
+        case 'LPB':
+            # code...
+            # landing Page Band
+            return view('LPB');
+            break;
+        case 'LPC':
+            # code...
+            # landing Page Contruccion
+            return view('LPC');
             break;
         default:
             # code...
