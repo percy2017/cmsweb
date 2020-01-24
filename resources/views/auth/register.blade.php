@@ -57,10 +57,20 @@
                             {{--  <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>  --}}
 
                             {{--  <div class="col-md-6">  --}}
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confimar Contraseña">
+                                {{-- <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confimar Contraseña"> --}}
                             {{--  </div>  --}}
                         </div>
-
+                        <div class="form-group">
+                        
+                            @captcha
+                            <input type="text" class="form-control @error('captcha') is-invalid @enderror" id="captcha" name="captcha" autocomplete="off" placeholder="Ingresa el codigo de la imagen">
+                            @error('captcha')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        
                         <div class="form-group">
                             {{--  <div class="col-md-6 offset-md-4">  --}}
                                 <button type="submit" class="btn btn-primary">
@@ -69,7 +79,11 @@
                                 </button>
                             {{--  </div>  --}}
                         </div>
+
+                        
                     </form>
+
+                   
                 </div>
             </div>
         </div>

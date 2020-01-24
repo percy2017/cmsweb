@@ -22,6 +22,7 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'server_side'           => 0,
             ])->save();
         }
 
@@ -36,6 +37,7 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'server_side'           => 0,
             ])->save();
         }
 
@@ -50,6 +52,22 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'templates');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'templates',
+                'display_name_singular' => 'Plantilla',
+                'display_name_plural'   => 'Plantillas',
+                'icon'                  => 'voyager-photo',
+                'model_name'            => 'App\\Template',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
             ])->save();
         }
     }

@@ -22,11 +22,12 @@
       <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link href="vendor/mdb/lgp/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/mdb/lgp/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="vendor/mdb/lgp/css/mdb.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/mdb/lgp/css/mdb.min.css" rel="stylesheet') }}">
 
-      <link rel="stylesheet" type="text/css" href="vendor/whatsapp/floating-wpp.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/whatsapp/floating-wpp.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/share/css/contact-buttons.css') }}">
    @laravelPWA
 </head>
 <body>
@@ -51,11 +52,17 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    {{-- {{ __('Login') }} --}}
+                                    Ingresar
+                                </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        {{-- {{ __('Register') }} --}}
+                                        Registrarme
+                                    </a>
                                 </li>
                             @endif
                         @else
@@ -98,18 +105,18 @@
   <!-- SCRIPTS -->
 
   <!-- JQuery -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/jquery-3.4.1.min.js') }}"></script>
 
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/popper.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/popper.min.js') }}"></script>
 
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/bootstrap.min.js') }}"></script>
 
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/mdb.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/mdb.min.js') }}"></script>
 
-  <script src="vendor/whatsapp/floating-wpp.js"></script>
+  <script src="{{ asset('vendor/whatsapp/floating-wpp.js') }}"></script>
   <script>
     //Animation init
     new WOW().init();

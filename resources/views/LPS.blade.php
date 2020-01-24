@@ -43,6 +43,8 @@
   </style>
 
   <link rel="stylesheet" type="text/css" href="vendor/whatsapp/floating-wpp.css">
+  <link rel="stylesheet" href="{{ asset('vendor/share/css/contact-buttons.css') }}">
+  
    @laravelPWA
 </head>
 
@@ -66,11 +68,17 @@
           <ul class="navbar-nav ml-auto">
             @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">
+                                  {{-- {{ __('Login') }} --}}
+                                  Ingresar
+                                </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                      {{-- {{ __('Register') }} --}}
+                                      Registrarme
+                                    </a>
                                 </li>
                             @endif
                         @else
@@ -890,6 +898,8 @@
   <script type="text/javascript" src="vendor/mdb/lgp/js/mdb.min.js"></script>
 
   <script src="vendor/whatsapp/floating-wpp.js"></script>
+  <script src="{{ asset('vendor/share/js/jquery.contact-buttons.js') }}"></script>
+
   <script>
     //Animation init
     new WOW().init();
@@ -919,6 +929,16 @@
       autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
       size: '{{ setting('whatsapp.size') }}'
     });
+
+    // Initialize Share-Buttons
+$.contactButtons({
+  effect  : 'slide-on-scroll',
+  buttons : {
+    'facebook':   { class: 'facebook', use: true, link: 'https://www.facebook.com/pages/mycompany', extras: 'target="_blank"' },
+    'twitter':   { class: 'twitter', use: true, link: 'https://www.twitter.com/company/mycompany', extras: 'target="_blank"' },
+    'whatsapp':   { class: 'whatsapp', use: true, link: 'https://www.whatsapp.com/company/mycompany', extras: 'target="_blank"' }
+  }
+});
   </script>
 
 </body>

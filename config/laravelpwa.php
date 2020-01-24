@@ -4,9 +4,9 @@ return [
     'name' => 'LaravelPWA',
     'manifest' => [
         'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'short_name' => env('APP_NAME_SHORT', 'My App'),
         'start_url' => '/',
-        'background_color' => '#ffffff',
+        'background_color' => env('APP_NAME_THEME_COlOR', '#ffffff'),
         'theme_color' => '#000000',
         'display' => 'standalone',
         'orientation'=> 'any',

@@ -62,8 +62,9 @@
 
                         <div class="form-group">
                             {{--  <div class="col-md-8 offset-md-4">  --}}
-                                <button type="submit" class="btn btn-deafult">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn-primary">
+                                    {{-- {{ __('Login') }} --}}
+                                    Ingresar al sistema
                                 </button>
 
                             {{--  </div>  --}}
@@ -75,7 +76,7 @@
                             {{--  <div class="col-md-8 offset-md-4">  --}}
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a href="{{ route('password.request') }}">
                                         {{--  {{ __('Forgot Your Password?') }}  --}}
                                         Olvidaste tu contraseña ?
                                     </a>

@@ -24,7 +24,7 @@
                             <p><strong>Registro: </strong>{{ Auth::user()->created_at }}</p>
                             <hr />
                             @if(Auth::user()->role->id == 1)
-                                <a class="btn btn-primary">Ir a Panel</a>
+                                <a class="btn btn-primary" href="{{ route('voyager.dashboard') }}">Ir a Panel</a>
                             @endif
                             
                         </address>

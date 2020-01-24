@@ -61,7 +61,7 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('site.template');
         if (!$setting->exists) {
             $setting->fill([
-                'display_name' => 'template',
+                'display_name' => 'Plantillas',
                 'value'        => 'LPS',
                 'details'      => '',
                 'type'         => 'text',
@@ -225,7 +225,7 @@ class SettingsTableSeeder extends Seeder
           if (!$setting->exists) {
               $setting->fill([
                   'display_name' => 'Timepo de espera para abrir',
-                  'value'        => '9000',
+                  'value'        => '12000',
                   'details'      => '',
                   'type'         => 'text',
                   'order'        => 8,
