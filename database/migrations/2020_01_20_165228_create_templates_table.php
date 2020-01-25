@@ -18,7 +18,7 @@ class CreateTemplatesTable extends Migration
             $table->string('name');
             $table->string('name_short');
             $table->string('description');
-            $table->string('description_lang');
+            $table->string('description_lang')->nullable();
             $table->string('image');
             $table->text('category_id');
             $table->boolean('default');

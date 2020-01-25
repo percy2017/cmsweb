@@ -143,106 +143,146 @@ class SettingsTableSeeder extends Seeder
         }
 
 
-          // Whatsapp ------------------------------------
-          $setting = $this->findSetting('whatsapp.phone');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Numero de Móvil',
-                  'value'        => '0',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 1,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.popupMessage');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Titulo',
-                  'value'        => 'Hola, Necesitas Ayuda?',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 2,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.message');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Mensaje de Bienvenida',
-                  'value'        => 'Quiero mas Info..',
-                  'details'      => '',
-                  'type'         => 'text_area',
-                  'order'        => 3,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.headerTitle');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Titulo',
-                  'value'        => 'Mi Chat',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 4,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.color');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Color',
-                  'value'        => '#5991FB',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 5,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.buttonImage');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Imagen del boton',
-                  'value'        => '',
-                  'details'      => '',
-                  'type'         => 'image',
-                  'order'        => 6,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.position');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Posicion del boton',
-                  'value'        => '',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 7,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.autoOpenTimeout');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Timepo de espera para abrir',
-                  'value'        => '12000',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 8,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
-          $setting = $this->findSetting('whatsapp.size');
-          if (!$setting->exists) {
-              $setting->fill([
-                  'display_name' => 'Tamanio del boton',
-                  'value'        => '72px',
-                  'details'      => '',
-                  'type'         => 'text',
-                  'order'        => 9,
-                  'group'        => 'Whatsapp',
-              ])->save();
-          }
+        // Whatsapp ------------------------------------
+        $setting = $this->findSetting('whatsapp.phone');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Numero de Móvil',
+                'value'        => '0',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.popupMessage');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Titulo',
+                'value'        => 'Hola, Necesitas Ayuda?',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 2,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.message');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Mensaje de Bienvenida',
+                'value'        => 'Quiero mas Info..',
+                'details'      => '',
+                'type'         => 'text_area',
+                'order'        => 3,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.headerTitle');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Titulo',
+                'value'        => 'Mi Chat',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 4,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.color');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Color',
+                'value'        => '#5991FB',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 5,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.buttonImage');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Imagen del boton',
+                'value'        => '',
+                'details'      => '',
+                'type'         => 'image',
+                'order'        => 6,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.position');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Posicion del boton',
+                'value'        => '',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 7,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.autoOpenTimeout');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Timepo de espera para abrir',
+                'value'        => '12000',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 8,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        $setting = $this->findSetting('whatsapp.size');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Tamanio del boton',
+                'value'        => '72px',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 9,
+                'group'        => 'Whatsapp',
+            ])->save();
+        }
+        // Whatsapp ------------------------------------
+
+        // share -------------------
+        //-------------------------
+        // $setting = $this->findSetting('share.facebook');
+        // if (!$setting->exists) {
+        //     $setting->fill([
+        //         'display_name' => 'Facebook',
+        //         'value'        => 'https://www.facebook.com/sharer/sharer.php?u=',
+        //         'details'      => '',
+        //         'type'         => 'text',
+        //         'order'        => 1,
+        //         'group'        => 'Share',
+        //     ])->save();
+        // }
+        
+        // $setting = $this->findSetting('share.facebook');
+        // if (!$setting->exists) {
+        //     $setting->fill([
+        //         'display_name' => 'Twitter',
+        //         'value'        => 'https://twitter.com/home?status=',
+        //         'details'      => '',
+        //         'type'         => 'text',
+        //         'order'        => 2,
+        //         'group'        => 'Share',
+        //     ])->save();
+        // }
+        // $setting = $this->findSetting('share.whatsapp');
+        // if (!$setting->exists) {
+        //     $setting->fill([
+        //         'display_name' => 'Twitter',
+        //         'value'        => 'https://api.whatsapp.com/send?text=',
+        //         'details'      => '',
+        //         'type'         => 'text',
+        //         'order'        => 2,
+        //         'group'        => 'Share',
+        //     ])->save();
+        // }
+        // share -------------------
+
     }
 
     /**

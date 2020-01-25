@@ -3,9 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header">Ingreso al Sitio Web</div>
+                <div class="card-header">
+                    <h4>Ingreso al Sitio Web</h4>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -72,7 +74,7 @@
 
                         <hr />
 
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             {{--  <div class="col-md-8 offset-md-4">  --}}
 
                                 @if (Route::has('password.request'))
@@ -82,6 +84,12 @@
                                     </a>
                                 @endif
                             {{--  </div>  --}}
+                        </div>
+                        <hr />
+                        <div class="form-group text-center">
+                            <a class="btn btn-primary" href="/">
+                                Volver al Home
+                            </a>
                         </div>
                     </form>
                 </div>

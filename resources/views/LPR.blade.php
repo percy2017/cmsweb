@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>{{ setting('site.title') }}</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -22,7 +22,8 @@
     }
   </style>
   
-    <link rel="stylesheet" type="text/css" href="vendor/whatsapp/floating-wpp.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/whatsapp/floating-wpp.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendor/share/css/contact-buttons.css') }}">
    @laravelPWA
 </head>
 
@@ -35,7 +36,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <strong>Navbar</strong>
+          <strong>{{ setting('site.title') }}</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,45 +45,77 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!--Links-->
           <ul class="navbar-nav mr-auto smooth-scroll">
-            <li class="nav-item">
-              <a class="nav-link" href="#home">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about" data-offset="100">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#intro" data-offset="100">Intro</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#specials" data-offset="100">Specials</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#menu" data-offset="100">Menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#testimonials" data-offset="100">Opinions</a>
+            {{ menu('primary', 'layouts.partials.primary') }}
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    Estilos <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('template_change', 'LPS') }}">
+                      LP - Software
+                  </a>
+                  <a class="dropdown-item active" href="{{ route('template_change', 'LPR') }}">
+                      LP - Restorant
+                  </a>
+                  <a class="dropdown-item" href="{{ route('template_change', 'LPH') }}">
+                      LP - Hotel
+                  </a>
+             
+                  <hr />
+                  <a class="dropdown-item" href="{{ route('template_change', 'EC1') }}">
+                      EC - Ecommerce v1
+                  </a>
+                  <hr />
+                  <a class="dropdown-item" href="/login">
+                      Ves Mas
+                  </a>
+                </div>
             </li>
           </ul>
-
-          <!--Social Icons-->
+         
           <ul class="navbar-nav nav-flex-icons">
-            <li class="nav-item">
-              <a class="nav-link">
-                <i class="fab fa-facebook-f light-green-text"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">
-                <i class="fab fa-twitter light-green-text"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">
-                <i class="fab fa-instagram light-green-text"></i>
-              </a>
-            </li>
+           @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">
+                      {{-- {{ __('Login') }} --}}
+                      Ingresar
+                    </a>
+                </li>
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">
+                          {{-- {{ __('Register') }} --}}
+                          Registrarme
+                        </a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                      <a class="dropdown-item" href="/home">
+                            Perfil
+                        </a>
+
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                            Salir
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
           </ul>
         </div>
       </div>
@@ -835,8 +868,9 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="vendor/mdb/lgp/js/mdb.min.js"></script>
 
+  <script src="vendor/whatsapp/floating-wpp.js"></script>
+  <script src="{{ asset('vendor/share/js/jquery.contact-buttons.js') }}"></script>
 
-    <script src="vendor/whatsapp/floating-wpp.js"></script>
   <script>
     //Animation init
     new WOW().init();
@@ -869,6 +903,16 @@
       position: '{{ setting('whatsapp.position') }}',
       autoOpenTimeout: {{ setting('whatsapp.autoOpenTimeout') }},
       size: '{{ setting('whatsapp.size') }}'
+    });
+
+    // Initialize Share-Buttons
+    $.contactButtons({
+      effect  : 'slide-on-scroll',
+      buttons : {
+        'facebook':   { class: 'facebook', use: true, link: 'https://www.facebook.com/sharer/sharer.php?u='+window.location, extras: 'target="_blank"' },
+        'twitter':   { class: 'twitter', use: true, link: 'https://twitter.com/home?status='+window.location, extras: 'target="_blank"' },
+        'whatsapp':   { class: 'whatsapp', use: true, link: 'https://api.whatsapp.com/send?text='+window.location, extras: 'target="_blank"' }
+      }
     });
 
   </script>

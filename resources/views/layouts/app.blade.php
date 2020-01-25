@@ -32,7 +32,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm">
+        {{--  <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ setting('site.title') }}
@@ -42,25 +42,25 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+               
                     <ul class="navbar-nav mr-auto">
                         {{ menu('primary', 'layouts.partials.primary') }}
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                   
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                      
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
-                                    {{-- {{ __('Login') }} --}}
+                                  
                                     Ingresar
                                 </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">
-                                        {{-- {{ __('Register') }} --}}
+                                       
                                         Registrarme
                                     </a>
                                 </li>
@@ -80,7 +80,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{--  {{ __('Logout') }}  --}}
+                                     
                                         Salir
                                     </a>
 
@@ -93,7 +93,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>  --}}
 
         <main class="py-4">
             @yield('content')

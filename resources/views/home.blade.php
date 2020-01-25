@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Mi Perfil</div>
+                <div class="card-header">
+                    <h4>Mi Perfil</h4>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -26,7 +28,7 @@
                             @if(Auth::user()->role->id == 1)
                                 <a class="btn btn-primary" href="{{ route('voyager.dashboard') }}">Ir a Panel</a>
                             @endif
-                            
+                            <a class="btn btn-primary" href="/">Volver al Home</a>
                         </address>
                         
                         

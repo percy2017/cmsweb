@@ -48,6 +48,24 @@ Route::get('/', function () {
             # landing Page Contruccion
             return view('LPC');
             break;
+
+        case 'EC1':
+            # code...
+          
+            return view('ecommerce1');
+            break;
+
+        case 'EC2':
+            # code...
+   
+            return view('ecommerce2');
+            break;
+
+        case 'EC3':
+            # code...
+
+            return view('ecommerce3');
+                break;
         default:
             # code...
             break;
@@ -55,12 +73,15 @@ Route::get('/', function () {
     
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+    Route::get('/template/{name_short}', 'TemplateController@change')->name('template_change');
+});
+
+

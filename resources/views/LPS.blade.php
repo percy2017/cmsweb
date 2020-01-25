@@ -9,9 +9,9 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link href="vendor/mdb/lgp/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ asset('vendor/mdb/lgp/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="vendor/mdb/lgp/css/mdb.min.css" rel="stylesheet">
+  <link href="{{ asset('vendor/mdb/lgp/css/mdb.min.css') }}" rel="stylesheet">
   <style type="text/css">
     html,
     body,
@@ -42,9 +42,8 @@
 
   </style>
 
-  <link rel="stylesheet" type="text/css" href="vendor/whatsapp/floating-wpp.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/whatsapp/floating-wpp.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/share/css/contact-buttons.css') }}">
-  
    @laravelPWA
 </head>
 
@@ -66,46 +65,73 @@
             {{ menu('primary', 'layouts.partials.primary') }}
           </ul>
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    Estilos <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item active" href="{{ route('template_change', 'LPS') }}">
+                      LP - Software
+                  </a>
+                  <a class="dropdown-item" href="{{ route('template_change', 'LPR') }}">
+                      LP - Restorant
+                  </a>
+                  <a class="dropdown-item" href="{{ route('template_change', 'LPH') }}">
+                      LP - Hotel
+                  </a>
+               
+                  <hr />
+                  <a class="dropdown-item" href="{{ route('template_change', 'EC1') }}">
+                      EC - Ecommerce v1
+                  </a>
+                  <hr />
+                  <a class="dropdown-item" href="/login">
+                      Ves Mas
+                  </a>
+                </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
             @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">
-                                  {{-- {{ __('Login') }} --}}
-                                  Ingresar
-                                </a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">
-                                      {{-- {{ __('Register') }} --}}
-                                      Registrarme
-                                    </a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">
+                      {{-- {{ __('Login') }} --}}
+                      Ingresar
+                    </a>
+                </li>
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">
+                          {{-- {{ __('Register') }} --}}
+                          Registrarme
+                        </a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                  <a class="dropdown-item" href="/home">
-                                        Perfil
-                                    </a>
+                      <a class="dropdown-item" href="/home">
+                            Perfil
+                        </a>
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Salir
-                                    </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                            Salir
+                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
           </ul>
         </div>
       </div>
@@ -886,18 +912,18 @@
   <!-- SCRIPTS -->
 
   <!-- JQuery -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/jquery-3.4.1.min.js') }}"></script>
 
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/popper.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/popper.min.js') }}"></script>
 
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/bootstrap.min.js') }}"></script>
 
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="vendor/mdb/lgp/js/mdb.min.js"></script>
+  <script type="text/javascript" src="{{ asset('vendor/mdb/lgp/js/mdb.min.js') }}"></script>
 
-  <script src="vendor/whatsapp/floating-wpp.js"></script>
+  <script src="{{ asset('vendor/whatsapp/floating-wpp.js') }}"></script>
   <script src="{{ asset('vendor/share/js/jquery.contact-buttons.js') }}"></script>
 
   <script>
@@ -915,6 +941,7 @@
     });
 
 
+  // whatsapp ------------------------------------
     $('#myWP').floatingWhatsApp({
       phone: '{{ setting('whatsapp.phone') }}',
       popupMessage: '{{ setting('whatsapp.popupMessage') }}',
@@ -931,14 +958,14 @@
     });
 
     // Initialize Share-Buttons
-$.contactButtons({
-  effect  : 'slide-on-scroll',
-  buttons : {
-    'facebook':   { class: 'facebook', use: true, link: 'https://www.facebook.com/pages/mycompany', extras: 'target="_blank"' },
-    'twitter':   { class: 'twitter', use: true, link: 'https://www.twitter.com/company/mycompany', extras: 'target="_blank"' },
-    'whatsapp':   { class: 'whatsapp', use: true, link: 'https://www.whatsapp.com/company/mycompany', extras: 'target="_blank"' }
-  }
-});
+    $.contactButtons({
+      effect  : 'slide-on-scroll',
+      buttons : {
+        'facebook':   { class: 'facebook', use: true, link: 'https://www.facebook.com/sharer/sharer.php?u='+window.location, extras: 'target="_blank"' },
+        'twitter':   { class: 'twitter', use: true, link: 'https://twitter.com/home?status='+window.location, extras: 'target="_blank"' },
+        'whatsapp':   { class: 'whatsapp', use: true, link: 'https://api.whatsapp.com/send?text='+window.location, extras: 'target="_blank"' }
+      }
+    });
   </script>
 
 </body>

@@ -3,9 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header">Registro en el Sitio Web</div>
+                <div class="card-header">
+                    <h4>Registro en el Sitio Web</h4>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -71,7 +73,7 @@
                             @enderror
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             {{--  <div class="col-md-6 offset-md-4">  --}}
                                 <button type="submit" class="btn btn-primary">
                                     {{--  {{ __('Register') }}  --}}
@@ -80,7 +82,12 @@
                             {{--  </div>  --}}
                         </div>
 
-                        
+                        <hr />
+                        <div class="form-group text-center">
+                            <a class="btn btn-primary" href="/">
+                                Volver al Home
+                            </a>
+                        </div>
                     </form>
 
                    
