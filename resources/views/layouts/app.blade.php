@@ -24,13 +24,22 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/mdb/lgp/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="{{ asset('vendor/mdb/lgp/css/mdb.min.css" rel="stylesheet') }}">
+    <link href="{{ asset('vendor/mdb/lgp/css/mdb.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/whatsapp/floating-wpp.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/share/css/contact-buttons.css') }}">
    @laravelPWA
 </head>
 <body>
+@if ($alerts = Session::get('message'))
+<div class="alerts">
+
+    <div class="alert alert-{{ Session::get('alert-type') }}">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
+</div>
+@endif
     <div id="app">
         {{--  <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
@@ -99,8 +108,6 @@
             @yield('content')
         </main>
     </div>
-
-
      <div id="myWP"></div>
   <!-- SCRIPTS -->
 

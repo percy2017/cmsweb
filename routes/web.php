@@ -77,6 +77,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('/politicas', 'FrontendController@politicas')->name('template_politicas');
+Route::get('/plantillas', 'FrontendController@plantillas')->name('template_plantillas');
 Auth::routes();
 
 Route::group(['prefix' => 'admin'], function () {

@@ -202,8 +202,8 @@ class MenuItemsTableSeeder extends Seeder
         $menu = Menu::where('name', 'primary')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Sobre Nosotros',
-            'url'     => '#',
+            'title'   => 'Documentacion',
+            'url'     => '/docs',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -218,8 +218,8 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Nuestros Servicios',
-            'url'     => '#',
+            'title'   => 'Politica & Condiciones',
+            'url'     => '/politicas',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -234,8 +234,8 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Nuestros Productos',
-            'url'     => '#',
+            'title'   => 'Plantillas',
+            'url'     => '/plantillas',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {

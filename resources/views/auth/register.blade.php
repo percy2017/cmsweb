@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h4>Registro en el Sitio Web</h4>
+                    <h4 class="text-center">Registro en {{ setting('site.title') }}</h4>
                 </div>
 
                 <div class="card-body">
@@ -84,8 +84,11 @@
 
                         <hr />
                         <div class="form-group text-center">
-                            <a class="btn btn-primary" href="/">
-                                Volver al Home
+                            <a class="btn btn-default" href="/">
+                                Volver
+                            </a>
+                            <a class="btn btn-default" href="/login">
+                                Ingresar
                             </a>
                         </div>
                     </form>
