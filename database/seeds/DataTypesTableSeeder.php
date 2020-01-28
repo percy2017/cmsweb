@@ -64,7 +64,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_plural'   => 'Plantillas',
                 'icon'                  => 'voyager-photo',
                 'model_name'            => 'App\\Template',
-                'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           => 0,

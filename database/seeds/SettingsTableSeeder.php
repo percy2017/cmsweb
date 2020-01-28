@@ -14,7 +14,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.title'),
-                'value'        => 'CmsWeb 2.0',
+                'value'        => 'CmsWeb v2.0',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 1,
@@ -26,7 +26,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.description'),
-                'value'        => 'Software inteligente para crear y administrar contenido dinamico en internet',
+                'value'        => 'Software inteligente para crear y administrar contenido dinamico en internet - Paginas de Destino y Comercio Electronico',
                 'details'      => '',
                 'type'         => 'text_area',
                 'order'        => 2,
@@ -38,7 +38,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => __('voyager::seeders.settings.site.logo'),
-                'value'        => '',
+                'value'        => 'vendor/admin/images/template.png',
                 'details'      => '',
                 'type'         => 'image',
                 'order'        => 3,
@@ -148,7 +148,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Numero de Móvil',
-                'value'        => '0',
+                'value'        => '59171130523',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 1,

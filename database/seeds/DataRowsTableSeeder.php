@@ -353,6 +353,7 @@ class DataRowsTableSeeder extends Seeder
         }
 
         // Template--------------
+        // ---------------------
         $dataRow = $this->dataRow($templateDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -380,6 +381,35 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'slugify' => [
+                        'origin' => 'name',
+                        'forceUpdate' => true,
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ],
+                'order'        => 3,
             ])->save();
         }
 
@@ -388,13 +418,195 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'text',
                 'display_name' => 'Nombre Corto',
-                'required'     => 1,
+                'required'     => 0,
                 'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 4,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+
+
+        $dataRow = $this->dataRow($templateDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Imagen Pincipal',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 5,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'images');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'multiple_images',
+                'display_name' => 'Imagenes',
+                'required'     => 0,
+                'browse'       => 0,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 3,
+                'order'        => 6,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'category_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Categoria',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 8,
+                'details' => [
+                    'options' => [
+                        'Landing Page' => 'Landing Page',
+                        'E-commerce' => 'E-commerce',
+                    ],
+                    'display'   => [
+                        'width'  => '6'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'block_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_multiple',
+                'display_name' => 'Blockes',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 9,
+                'details'      => [
+                    'options'   => [
+                        'Features' => 'Features',
+                        'Download' => 'Download',
+                        'Heading'  => 'Heading',
+                    ],
+                    'display'   => [
+                        'width'  => '6'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'bussine_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_multiple',
+                'display_name' => 'Negocios o Empresas',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 10,
+                'details'      => [
+                    'options'   => [
+                        'Empresa de Desarrollo de Software' => 'Empresa de Desarrollo de Software',
+                        'Empresa de Marketing Digital' => 'Empresa de Marketing Digital',
+                        'Negocios de Restaurates y Ventas de Comida Rapida' => 'Negocios de Restaurates y Ventas de Comida Rapida',
+                    ],
+                    'display'   => [
+                        'width'  => '6'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'tag_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_multiple',
+                'display_name' => 'Tags',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 11,
+                'details'      => [
+                    'options'   => [
+                        'software' => 'software',
+                        'restaurant' => 'restaurant',
+                        'hotel'  => 'hotel',
+                    ],
+                    'display'   => [
+                        'width'  => '6'
+                    ]
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'template_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_multiple',
+                'display_name' => 'Plantillas Relacionadas',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 12,
+                'details'      => [
+                    'options'   => [
+                        'LPS' => 'Landing Page - Software',
+                        'LPV' => 'Landing Page - Agencias',
+                        'LPU' => 'Landing Page - Universidad',
+                        'LPT' => 'Landing Page - Travel & Turismo',
+                        'LPP' => 'Landing Page - Spa & Beauty',
+                        'LPR' => 'Landing Page - Restaurant',
+                        'LPM' => 'Landing Page - Medical',
+                        'LPI' => 'Landing Page - Multi Uso',
+                        'LPH' => 'Landing Page - Hotel & Residenciales',
+                        'LPF' => 'Landing Page - Cafe Bar',
+                        'LPE' => 'Landing Page - Eventos',
+                        'LPC' => 'Landing Page - Contrunccion',
+                        'LPB' => 'Landing Page - Bandas',
+                        'LPA' => 'Landing Page - Transporte',
+                        'EC1' => 'E-Commerce MBD v1',
+                        'EC2' => 'E-Commerce MBD v2',
+                        'EC3' => 'E-Commerce MBD v3',
+                    ]
+                ]
             ])->save();
         }
 
@@ -409,58 +621,12 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 4,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($templateDataType, 'default');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'checkbox',
-                'display_name' => 'Default',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($templateDataType, 'image');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'image',
-                'display_name' => 'Imagen Pincipal',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 6,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($templateDataType, 'category_id');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => 'Categoria',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 7,
-                'details' => [
-                    'options' => [
-                        'Landing Page' => 'Landing Page',
-                        'E-commerce' => 'E-commerce',
-                    ],
-                ]
+                'order'        => 13,
+                // 'details'      => [
+                //     'display'   => [
+                //         'width'  => '6',
+                //     ],
+                // ]
             ])->save();
         }
 
@@ -475,9 +641,12 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 8,
+                'order'        => 14,
             ])->save();
         }
+
+        
+       
 
 
     }
