@@ -448,15 +448,15 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => 5,
                 'details'      => [
-                    'resize'   => [
-                        'witdth' => '1200',
-                        'height' => '1200'
-                    ],
-                    'name'          => 'cropped-whatsapp-500',
-                    'crop'          => [
-                        'width'     => '500',
-                        'height'    => '500'
-                    ],
+                    // 'resize'   => [
+                    //     'witdth' => '1200',
+                    //     'height' => '1200'
+                    // ],
+                    // 'name'          => 'cropped-whatsapp-500',
+                    // 'crop'          => [
+                    //     'width'     => '500',
+                    //     'height'    => '500'
+                    // ],
                     'display'   => [
                         'width'  => '6',
                     ],

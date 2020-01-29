@@ -94,6 +94,54 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }        
 
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Blocks',
+            'url'     => '',
+            'route'   => 'voyager.blocks.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-github',
+                'color'      => null,
+                'parent_id'  => $ConfigMenuItem->id,
+                'order'      => 5,
+            ])->save();
+        }   
+        
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Productos',
+            'url'     => '',
+            'route'   => 'voyager.products.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-shop',
+                'color'      => null,
+                'parent_id'  => $ConfigMenuItem->id,
+                'order'      => 6,
+            ])->save();
+        }  
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Posts',
+            'url'     => '',
+            'route'   => 'voyager.posts.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-pen',
+                'color'      => null,
+                'parent_id'  => $ConfigMenuItem->id,
+                'order'      => 7,
+            ])->save();
+        }  
         
         // ------------ Herramientas -----------------------
         // -------------------------------------------------
@@ -186,6 +234,22 @@ class MenuItemsTableSeeder extends Seeder
             $menuItem->fill([
                 'target'     => '_self',
                 'icon_class' => 'voyager-bread',
+                'color'      => null,
+                'parent_id'  => $toolsMenuItem->id,
+                'order'      => 5,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Comentarios',
+            'url'     => '',
+            'route'   => 'voyager.comments.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-bubble',
                 'color'      => null,
                 'parent_id'  => $toolsMenuItem->id,
                 'order'      => 5,

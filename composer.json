@@ -12,6 +12,7 @@
         "binarytorch/larecipe": "^2.2",
         "bonecms/laravel-captcha": "^2.2",
         "darryldecode/cart": "^4.1",
+        "facade/ignition": "^1.16",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "5.8.*",
@@ -22,7 +23,8 @@
         "rachidlaasri/laravel-installer": "^4.0",
         "silviolleite/laravelpwa": "^1.0",
         "spatie/laravel-backup": "^6.7",
-        "tcg/voyager": "^1.3"
+        "tcg/voyager": "^1.3",
+        "villca/numeros-en-letras": "^1.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

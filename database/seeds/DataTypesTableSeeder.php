@@ -70,6 +70,67 @@ class DataTypesTableSeeder extends Seeder
                 'server_side'           => 0,
             ])->save();
         }
+
+        $dataType = $this->dataType('slug', 'blocks');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'blocks',
+                'display_name_singular' => 'Block',
+                'display_name_plural'   => 'Blocks',
+                'icon'                  => 'voyager-github',
+                'model_name'            => 'App\\Block',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'products');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'products',
+                'display_name_singular' => 'Producto',
+                'display_name_plural'   => 'Productos',
+                'icon'                  => 'voyager-shop',
+                'model_name'            => 'App\\Product',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'comments');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'comments',
+                'display_name_singular' => 'Comentario',
+                'display_name_plural'   => 'Comentarios',
+                'icon'                  => 'voyager-bubble',
+                'model_name'            => 'App\\Comment',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'posts');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'posts',
+                'display_name_singular' => 'Post',
+                'display_name_plural'   => 'Posts',
+                'icon'                  => 'voyager-pen',
+                'model_name'            => 'App\\Post',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+        
     }
 
     /**

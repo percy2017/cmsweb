@@ -127,7 +127,7 @@
                             <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="" autofocus>
                     
 
-                            <label for="Form-email1">Your email</label>
+                            <label for="Form-email1">Correo Electronico</label>
                              @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -137,9 +137,9 @@
 
                         <div class="md-form pb-3">
                             <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" placeholder="">
-                            <label for="Form-pass1">Your password</label>
-                            <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
-                                Password?</a></p>
+                            <label for="Form-pass1">Password</label>
+                            <p class="font-small blue-text d-flex justify-content-end">Olvidaste tu <a href="{{ route('password.request') }}" class="blue-text ml-1">
+                                Contraseña</a></p>
                                 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -149,11 +149,12 @@
                         </div>
 
                         <div class="text-center mb-3">
-                            <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+                            <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Ingresar</button>
+                            <a href="/" class="btn btn-block btn-white btn-rounded z-depth-1a">Volver al Home</a>
                         </div>
 
                     </form>
-                    <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in with:
+                    <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> o ingresar con:
                     </p>
 
                     <div class="row my-3 d-flex justify-content-center">
