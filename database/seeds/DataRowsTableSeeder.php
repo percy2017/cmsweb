@@ -440,14 +440,23 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'image',
                 'display_name' => 'Imagen Pincipal',
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
                 'delete'       => 0,
                 'order'        => 5,
                 'details'      => [
+                    'resize'   => [
+                        'witdth' => '1200',
+                        'height' => '1200'
+                    ],
+                    'name'          => 'cropped-whatsapp-500',
+                    'crop'          => [
+                        'width'     => '500',
+                        'height'    => '500'
+                    ],
                     'display'   => [
                         'width'  => '6',
                     ],
@@ -491,9 +500,6 @@ class DataRowsTableSeeder extends Seeder
                     'options' => [
                         'Landing Page' => 'Landing Page',
                         'E-commerce' => 'E-commerce',
-                    ],
-                    'display'   => [
-                        'width'  => '6'
                     ]
                 ]
             ])->save();
@@ -516,9 +522,6 @@ class DataRowsTableSeeder extends Seeder
                         'Features' => 'Features',
                         'Download' => 'Download',
                         'Heading'  => 'Heading',
-                    ],
-                    'display'   => [
-                        'width'  => '6'
                     ]
                 ]
             ])->save();
@@ -541,9 +544,6 @@ class DataRowsTableSeeder extends Seeder
                         'Empresa de Desarrollo de Software' => 'Empresa de Desarrollo de Software',
                         'Empresa de Marketing Digital' => 'Empresa de Marketing Digital',
                         'Negocios de Restaurates y Ventas de Comida Rapida' => 'Negocios de Restaurates y Ventas de Comida Rapida',
-                    ],
-                    'display'   => [
-                        'width'  => '6'
                     ]
                 ]
             ])->save();
@@ -566,9 +566,6 @@ class DataRowsTableSeeder extends Seeder
                         'software' => 'software',
                         'restaurant' => 'restaurant',
                         'hotel'  => 'hotel',
-                    ],
-                    'display'   => [
-                        'width'  => '6'
                     ]
                 ]
             ])->save();
@@ -621,15 +618,28 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 13,
-                // 'details'      => [
-                //     'display'   => [
-                //         'width'  => '6',
-                //     ],
-                // ]
+                'order'        => 13
             ])->save();
         }
-
+        // $dataRow = $this->dataRow($templateDataType, 'details');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'code_editor',
+        //         'display_name' => 'Acciones de la Pagina',
+        //         'required'     => 0,
+        //         'browse'       => 0,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'order'        => 14,
+        //         'details'      => [
+        //             'display'   => [
+        //                 'width'  => '6' 
+        //             ]
+        //         ]
+        //     ])->save();
+        // }
         $dataRow = $this->dataRow($templateDataType, 'description_lang');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -641,12 +651,54 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 14,
+                'order'        => 15,
             ])->save();
         }
 
-        
+        $dataRow = $this->dataRow($templateDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 16,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($templateDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 17,
+            ])->save();
+        }
        
+        $dataRow = $this->dataRow($templateDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.deleted_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 18,
+            ])->save();
+        }
 
 
     }

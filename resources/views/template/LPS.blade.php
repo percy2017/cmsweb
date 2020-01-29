@@ -100,10 +100,10 @@
           <div class="row flex-center pt-5 mt-3">
             <div class="col-md-12 col-lg-6 text-center text-md-left margins">
               <div class="white-text">
-                <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">{{ setting('site.title') }}</h1>
+                <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">{{ $collection->name }}</h1>
                 <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
                 <h6 class="wow fadeInLeft" data-wow-delay="0.3s">
-                 {{ setting('site.description') }}
+                 {{ $collection->description }}
                 </h6>
                 <br>
                 <a href="https://github.com/percy2017/cmsweb" class="btn btn-white btn-rounded blue-text font-weight-bold ml-lg-0 wow fadeInLeft"

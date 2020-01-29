@@ -23,7 +23,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
       <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">{{ setting('site.title') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
           aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -84,9 +84,9 @@
             <div class="col-md-12">
               <div class="text-center text-white">
                 <div class="wow fadeInDown" data-wow-delay=".2s">
-                  <h2 class="font-weight-bold display-3 mb-0">Band</h2>
+                  <h2 class="font-weight-bold display-3 mb-0">{{ $collection->name }}</h2>
                   <hr class="hr-light my-3 clearfix d-none d-md-block">
-                  <h4 class="pt-2 pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.</h4>
+                  <h4 class="pt-2 pb-3">{{ $collection->description }}</h4>
                 </div>
                 <a class="btn btn-pink-blue btn-rounded text-uppercase wow fadeInUp" data-wow-delay=".2s" href="#tour" data-offset="100">
                   <i class="far fa-calendar-alt mr-2"></i>

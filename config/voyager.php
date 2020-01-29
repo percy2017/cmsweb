@@ -244,12 +244,16 @@ return [
        'allow_delete'        => true,
        'allow_create_folder' => true,
        'allow_rename'        => true,
-       /*'watermark'           => [
+       'expanded'            => true,
+       'show_toolbar'        => true,
+       'allow_crop'          => true,
+       'quality'             => 90,
+       'watermark'           => [
             'source'         => 'watermark.png',
             'position'       => 'bottom-left',
             'x'              => 0,
             'y'              => 0,
-            'size'           => 15,
+            'size'           => 20,
        ],
        'thumbnails'          => [
            [
@@ -258,6 +262,6 @@ return [
                 'width' => 500,
                 'height'=> 500
            ],
-       ]*/
+       ]
    ],
 ];

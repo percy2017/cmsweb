@@ -225,7 +225,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Timepo de espera para abrir',
-                'value'        => '12000',
+                'value'        => '22000',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 8,
