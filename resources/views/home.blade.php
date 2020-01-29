@@ -27,7 +27,7 @@
   
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
-              <img src="{{ Voyager::Image(Auth::user()->avatar) }}" alt="User Photo" class="z-depth-1 mb-3 mx-auto" />
+              <img src="{{ Voyager::Image(Auth::user()->avatar) }}" class="img-thumbnail"  style="width: 130px" />
   
               <p class="text-muted"><small>Bienvenido al mejor CmsWeb</small></p>
               <div class="row flex-center">
