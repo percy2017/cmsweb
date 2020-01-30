@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 use App\Template;
+use App\Block;
 use Illuminate\Support\Facades\DB;
 class TemplateController extends Controller
 {

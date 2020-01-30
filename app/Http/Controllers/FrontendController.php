@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Template;
+use App\Block;
 use NumerosEnLetras;
 class FrontendController extends Controller
 {
@@ -11,7 +12,7 @@ class FrontendController extends Controller
     {
         $template = setting('site.template');
         $collection = Template::where('name_short', $template)->first();
-        
+        $blocks = Block::where('template_id', $collection->id)->get();
 
         // switch ($template) {
         //     case 'LPS':
@@ -71,7 +72,7 @@ class FrontendController extends Controller
         // $view = "template.".$collection->name_short;
 
 
-        return view("template.".$collection->name_short, compact('collection'));
+        return view("template.".$collection->name_short, compact('collection', 'blocks'));
     }
     function politicas()
     {

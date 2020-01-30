@@ -447,20 +447,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 5,
-                'details'      => [
-                    // 'resize'   => [
-                    //     'witdth' => '1200',
-                    //     'height' => '1200'
-                    // ],
-                    // 'name'          => 'cropped-whatsapp-500',
-                    // 'crop'          => [
-                    //     'width'     => '500',
-                    //     'height'    => '500'
-                    // ],
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
+                'details'      => ''
             ])->save();
         }
 
@@ -476,11 +463,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 6,
-                'details'      => [
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
+                'details'      => ''
             ])->save();
         }
 
@@ -636,7 +619,7 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 15,
             ])->save();
         }
-
+        
         $dataRow = $this->dataRow($templateDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([

@@ -126,7 +126,10 @@
 
   <!--Main content-->
   <main>
-    @yield('body')
+    
+    @foreach ($blocks as $item)
+      @include('template.blocks.'.$item->name)
+    @endforeach
   </main>
   <!--Main content-->
 
