@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <!-- Section: Edit Account -->
+    
     <section class="section py-5">
       <!-- First row -->
       <div class="row">
