@@ -16,6 +16,9 @@
                         <!-- Slides -->
                         <div class="carousel-inner text-center text-md-left" role="listbox">
                             @foreach(json_decode($collection->images) as $file)
+                            @php 
+                            $var= str_replace('.', '-carusel.', Voyager::Image($file));
+                             @endphp
                                 @if ($loop->first)
                                     <div class="carousel-item active">
                                         <img src="{{ Voyager::Image($file) }}" alt="First slide" class="img-fluid">
