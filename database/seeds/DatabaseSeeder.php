@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VoyagerDatabaseSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TemplatesTableSeeder::class);
+        $this->call(BlockTableSeeder::class);
     }
 }

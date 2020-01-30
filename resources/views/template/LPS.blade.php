@@ -128,7 +128,9 @@
   <main>
     
     @foreach ($blocks as $item)
-      @include('template.blocks.'.$item->name)
+    
+   
+      @include('template.blocks.'.$item->name, ['data' => json_decode($item->details)])
     @endforeach
   </main>
   <!--Main content-->

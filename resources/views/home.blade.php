@@ -3,8 +3,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
-    
+<div class="container">
     <section class="section py-5">
       <!-- First row -->
       <div class="row">
@@ -126,6 +125,5 @@
       </div>
       <!-- First row -->
     </section>
-    <!-- Section: Edit Account -->
   </div>
 @endsection

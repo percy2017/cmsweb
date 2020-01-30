@@ -16,16 +16,16 @@
                         <!-- Slides -->
                         <div class="carousel-inner text-center text-md-left" role="listbox">
                             @foreach(json_decode($collection->images) as $file)
-                            @php 
-                            $var= str_replace('.', '-carusel.', Voyager::Image($file));
-                             @endphp
+                                @php 
+                                    $new_image = str_replace('.', '-carusel.', Voyager::Image($file));
+                                @endphp
                                 @if ($loop->first)
                                     <div class="carousel-item active">
-                                        <img src="{{ Voyager::Image($file) }}" alt="First slide" class="img-fluid">
+                                        <img src="{{ $new_image }}" alt="First slide" class="img-fluid">
                                     </div>
                                 @endif
                                 <div class="carousel-item">
-                                    <img src="{{ Voyager::Image($file) }}" alt="Second slide" class="img-fluid">
+                                    <img src="{{ $new_image }}" alt="Second slide" class="img-fluid">
                                 </div>
                             @endforeach
                         </div>

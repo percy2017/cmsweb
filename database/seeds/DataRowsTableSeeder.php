@@ -447,9 +447,6 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 5,
-<<<<<<< HEAD
-                'details'      => ''
-=======
                 'details'      => [
                     'resize'=>[
                         'width'=>'500',
@@ -486,7 +483,6 @@ class DataRowsTableSeeder extends Seeder
                 
                 ]
              
->>>>>>> 0822f53d067596bcae477cf931b4d482c3a7b2e9
             ])->save();
         }
 
@@ -502,10 +498,6 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 6,
-<<<<<<< HEAD
-                'details'      => ''
-            ])->save();
-=======
                 'details'      => [
                     'resize'=> [
                         'width'=> '576',
@@ -525,7 +517,6 @@ class DataRowsTableSeeder extends Seeder
             ]
                 
         ])->save();
->>>>>>> 0822f53d067596bcae477cf931b4d482c3a7b2e9
         }
 
         $dataRow = $this->dataRow($templateDataType, 'category_id');
@@ -945,6 +936,56 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($blockDataType, 'position');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Posicion',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($blockDataType, 'template_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'template_id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 4
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($blockDataType, 'details');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'code_editor',
+                'display_name' => 'Json',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 5
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($blockDataType, 'template_belongsto_role_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -965,6 +1006,7 @@ class DataRowsTableSeeder extends Seeder
                     'label'       => 'name',
                     'pivot_table' => 'templates',
                     'pivot'       => 0,
+                    'taggable'    => 0
                 ],
                 'order'        => 10,
             ])->save();
