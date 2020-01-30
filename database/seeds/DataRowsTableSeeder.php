@@ -448,19 +448,41 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => 5,
                 'details'      => [
-                    // 'resize'   => [
-                    //     'witdth' => '1200',
-                    //     'height' => '1200'
-                    // ],
-                    // 'name'          => 'cropped-whatsapp-500',
-                    // 'crop'          => [
-                    //     'width'     => '500',
-                    //     'height'    => '500'
-                    // ],
-                    'display'   => [
-                        'width'  => '6',
+                    'resize'=>[
+                        'width'=>'500',
+                        'height'=>null
                     ],
+                    'quality'=> '90%',
+                    'upsize'=> true,
+                    'thumbnails'=>[
+                        [
+
+                        'name'=> 'card',
+                            'crop'=> [
+                                'width'=> '1000',
+                                'height'=> '1000'
+                            ]
+                        ],
+                    
+                        [
+                        'name'=> 'whatsapp',
+                        'crop'=> [
+                            'width'=> '500',
+                            'height'=> '500'
+                            ]
+                        ],
+                        [
+                        'name'=> 'facebook',
+                            'crop'=> [
+                                'width'=> '1000',
+                                'height'=> '523'
+                            ]
+                     
+                        ] 
+                    ]
+                
                 ]
+             
             ])->save();
         }
 
@@ -477,11 +499,24 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => 6,
                 'details'      => [
-                    'display'   => [
-                        'width'  => '6',
+                    'resize'=> [
+                        'width'=> '576',
+                        'height'=> null
                     ],
-                ]
-            ])->save();
+                    'quality'=> '90%',
+                    'upsize'=> true,
+                    'thumbnails'=> [
+                            [
+                            'name'=> 'carusel',
+                            'crop'=> [
+                                'width'=> '576',
+                                'height'=> '626'
+                            ]
+                        ]
+                    ]
+            ]
+                
+        ])->save();
         }
 
         $dataRow = $this->dataRow($templateDataType, 'category_id');
