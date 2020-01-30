@@ -17,6 +17,7 @@ class CreateBlocksTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('template_id');
             $table->string('name');
+            
 
             $table->foreign('template_id')->references('id')->on('templates');
             $table->timestamps();

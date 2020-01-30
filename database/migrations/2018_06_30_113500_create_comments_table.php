@@ -35,6 +35,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('child_id')->references('id')->on('comments')->onDelete('cascade');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

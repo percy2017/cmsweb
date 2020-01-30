@@ -11,6 +11,8 @@ class FrontendController extends Controller
     {
         $template = setting('site.template');
         $collection = Template::where('name_short', $template)->first();
+        
+
         // switch ($template) {
         //     case 'LPS':
         //         return view('template.LPS');
@@ -67,6 +69,8 @@ class FrontendController extends Controller
         // }
         // return $collection->name_short;
         // $view = "template.".$collection->name_short;
+
+
         return view("template.".$collection->name_short, compact('collection'));
     }
     function politicas()
@@ -82,7 +86,6 @@ class FrontendController extends Controller
 
     function details($slug)
     {
-        // return $slug;
         $collection = Template::where('slug', $slug)->first();
         return view('template.details')->with(compact('collection'));
     }
