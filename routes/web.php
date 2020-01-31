@@ -29,8 +29,8 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
     Route::get('/template/update/{id}', 'TemplateController@update')->name('template_update');
-
     Route::get('/template/{name_short}', 'TemplateController@change')->name('template_change');
+    Route::get('/template/json/{block_id}', 'TemplateController@json')->name('template_json');
   
 });
 

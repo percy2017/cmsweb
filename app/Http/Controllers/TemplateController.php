@@ -69,4 +69,12 @@ class TemplateController extends Controller
             'alert-type' => 'success',
         ]);
     }
+
+    public function json($block_id)
+    {
+        $block = Template::where('id', $block_id)->first();
+        return view('vendor.template.json', [
+            'block' => $block
+        ]);
+    }
 }
