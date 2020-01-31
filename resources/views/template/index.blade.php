@@ -57,7 +57,7 @@
                 <div class="card booking-card">
                     <!-- Card image -->
                     <div class="view overlay">
-                        <img class="card-img-top" src="{{ Voyager::Image($item->image) }}" alt="{{ $item->name }}">
+                        <img class="card-img-top" src="{{ Voyager::Image($item->thumbnail('facebook')) }}" alt="{{ $item->name }}">
                         <a href="{{ route('template_change', $item->name_short) }}">
                             <div class="mask rgba-white-slight"></div>
                         </a>
