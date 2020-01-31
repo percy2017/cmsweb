@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Block;
+
 class BlockTableSeeder extends Seeder
 {
     /**
@@ -37,7 +38,33 @@ class BlockTableSeeder extends Seeder
                         'descripcion' => 'Descripcion #3'
                     ]
                 ]
-            ])
+            ]),
+
+        ]);
+
+        Block::create([
+            'name'        => 'lps_block2',
+            'template_id' => 1,
+            'position'    => 2,
+            'details'     => json_encode([
+                'image'        => '',
+                'title_strong' => 'Titulo Strong',
+                'title'        => ' Titulo default',
+                'descripcion'  => 'Lorem Ipsum is simply dummy text of the printing and typesetting let.',
+
+                'button1'      => [
+                    'name'     => 'Play store',
+                    'icon'     => 'fab fa-android pr-2',
+                    'action'   => '#'
+                ],
+
+                'button2'      => [
+                    'name'     => 'App store',
+                    'icon'     => 'fab fa-apple pr-2',
+                    'action'   => '#'
+                ]
+            ]),
+
         ]);
     }
 }

@@ -20,15 +20,16 @@
 
               <!--Section heading-->
               <h2 class="mb-3 my-5 dark-grey-text wow fadeIn" data-wow-delay="0.2s"><strong
-                  class="font-weight-bold">Download</strong> the application</h2>
+                  class="font-weight-bold">{{ $data->title_strong }}</strong> {{ $data->title }}</h2>
 
-              <p class="grey-text mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting let. Lorem
-                ipsum dolor sit amet,
-                consectetur adipisicing elit.</p>
+              <p class="grey-text mb-4">{{$data->descripcion}}</p>
+
               <a class="btn btn-white btn-rounded blue-text font-weight-bold ml-0 wow fadeIn" data-wow-delay="0.2s"><i
-                  class="fab fa-android pr-2" aria-hidden="true"></i> Play store</a>
+              class="{{ $data->button1->icon }}" aria-hidden="true"></i> {{ $data->button1->name }}</a>
+             
               <a class="btn btn-white btn-rounded blue-text font-weight-bold wow fadeIn" data-wow-delay="0.2s"><i
                   class="fab fa-apple pr-2" aria-hidden="true"></i> App store</a>
+              
             </div>
             <!-- /.Second column -->
 
