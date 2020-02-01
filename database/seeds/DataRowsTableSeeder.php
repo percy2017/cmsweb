@@ -543,24 +543,44 @@ class DataRowsTableSeeder extends Seeder
         $dataRow = $this->dataRow($templateDataType, 'block_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'select_multiple',
+                'type'         => 'text',
                 'display_name' => 'Blockes',
-                'required'     => 0,
-                'browse'       => 0,
+                'required'     => 1,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 9,
-                'details'      => [
-                    'options'   => [
-                        'Features' => 'Features',
-                        'Download' => 'Download',
-                        'Heading'  => 'Heading',
-                    ]
-                ]
+                  
             ])->save();
         }
+
+        /* $dataRow = $this->dataRow($templateDataType, 'block_belongsto_role_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Relacion Block',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'model'       => 'App\\Block',
+                    'table'       => 'blocks',
+                    'type'        => 'belongsTo',
+                    'column'      => 'block_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'blocks',
+                    'pivot'       => 0,
+                    'taggable'    => 0
+                ],
+                'order'        => 10,
+            ])->save();
+        } */
 
         $dataRow = $this->dataRow($templateDataType, 'bussine_id');
         if (!$dataRow->exists) {
@@ -656,6 +676,22 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 13
             ])->save();
         }
+
+        $dataRow = $this->dataRow($templateDataType, 'rating');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Puntuacion',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 13
+            ])->save();
+        }
+
 
         $dataRow = $this->dataRow($templateDataType, 'description_lang');
         if (!$dataRow->exists) {

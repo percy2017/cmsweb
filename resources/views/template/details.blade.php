@@ -15,19 +15,25 @@
                         <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
                         <!-- Slides -->
                         <div class="carousel-inner text-center text-md-left" role="listbox">
-                            @foreach(json_decode($collection->images) as $file)
-                                @php 
-                                    $new_image = str_replace('.', '-carusel.', Voyager::Image($file));
-                                @endphp
-                                @if ($loop->first)
-                                    <div class="carousel-item active">
-                                        <img src="{{ $new_image }}" alt="First slide" class="img-fluid">
+                            @php
+                                $images = json_decode($collection->images);
+                            @endphp
+                            @if ($images)
+                                @foreach($images as $file)
+                                    @php 
+                                        $new_image = str_replace('.', '-carusel.', Voyager::Image($file));
+                                    @endphp
+                                    @if ($loop->first)
+                                        <div class="carousel-item active">
+                                            <img src="{{ $new_image }}" alt="First slide" class="img-fluid">
+                                        </div>
+                                    @endif
+                                    <div class="carousel-item">
+                                        <img src="{{ $new_image }}" alt="Second slide" class="img-fluid">
                                     </div>
-                                @endif
-                                <div class="carousel-item">
-                                    <img src="{{ $new_image }}" alt="Second slide" class="img-fluid">
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
+                            
                         </div>
                         <!-- Slides -->
 
@@ -110,12 +116,17 @@
                                 data-parent="#accordionEx">
 
                                     <div class="card-body">
-                                        <ul>
-                                            @foreach(json_decode($collection->bussine_id) as $file)
-                                            
-                                                <li>{{ $file }}</li>
-                                            @endforeach
-                                        </ul>
+                                        @php
+                                            $bussine_id = json_decode($collection->bussine_id);
+                                        @endphp
+                                        @if ($bussine_id)
+                                            <ul>
+                                                @foreach($bussine_id as $file)
+                                                
+                                                    <li>{{ $file }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     </div>
 
                                 </div>
@@ -142,11 +153,17 @@
                                 <!-- Card body -->
                                 <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
                                     <div class="card-body">
-                                        <ul>
-                                            @foreach(json_decode($collection->block_id) as $file)
-                                                <li>{{ $file }}</li>
-                                            @endforeach
-                                        </ul>
+                                        @php
+                                            $block_id = json_decode($collection->block_id);
+                                        @endphp
+                                        @if ($block_id)
+                                            <ul>
+                                                @foreach($block_id as $file)
+                                                
+                                                    <li>{{ $file }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -215,43 +232,48 @@
 
                     <!-- First slide -->
                     <div class="carousel-item active">
-                        @foreach (json_decode($collection->template_id) as $file)
-                            @php
-                                $template = App\Template::where('name_short', $file)->first();
-                            @endphp
-                            <div class="col-md-4 mb-4">
-                                <!-- Card -->
-                                <div class="card card-ecommerce">
-                                    <!-- Card image -->
-                                    <div class="view overlay">
-                                    <img src="{{ Voyager::Image($template->image) }}" class="img-fluid"
-                                        alt="">
-                                    <a>
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                    </div>
-                                    <!-- Card image -->
-                                    <!-- Card content -->
-                                    <div class="card-body">
-                                        <!-- Category & Title -->
-                                        <h5 class="card-title mb-1">
-                                            <strong>
-                                                <a href="" class="dark-grey-text">{{  $template->name  }}</a>
-                                            </strong>
-                                        </h5>
-                                        <span class="badge badge-danger mb-2">{{ $template->category_id }}</span>
-                                        <!-- Card footer -->
-                                        <div class="card-footer pb-0">
-                                            <div class="row mb-0">
-                                                <a href="#" class="btn">Ver Mas</a>
+                        @php
+                            $template_id = json_decode($collection->template_id);
+                        @endphp
+                        @if ($template_id)
+                            @foreach ($template_id as $file)
+                                @php
+                                    $template = App\Template::where('name_short', $file)->first();
+                                @endphp
+                                <div class="col-md-4 mb-4">
+                                    <!-- Card -->
+                                    <div class="card card-ecommerce">
+                                        <!-- Card image -->
+                                        <div class="view overlay">
+                                        <img src="{{ Voyager::Image($template->thumbnail('facebook')) }}" class="img-fluid"
+                                            alt="">
+                                        <a>
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                        </div>
+                                        <!-- Card image -->
+                                        <!-- Card content -->
+                                        <div class="card-body">
+                                            <!-- Category & Title -->
+                                            <h5 class="card-title mb-1">
+                                                <strong>
+                                                    <a href="{{ route('template_details', $template->slug) }}" class="dark-grey-text">{{  $template->name  }}</a>
+                                                </strong>
+                                            </h5>
+                                            <span class="badge badge-danger mb-2">{{ $template->category_id }}</span>
+                                            <!-- Card footer -->
+                                            <div class="card-footer pb-0">
+                                                <div class="row mb-0">
+                                                    <a href="{{ route('template_details', $template->slug) }}" class="btn">Ver Mas</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Card content -->
                                     </div>
-                                    <!-- Card content -->
+                                    <!-- Card -->
                                 </div>
-                                <!-- Card -->
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
 
                     </div>
                     <!-- First slide -->

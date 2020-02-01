@@ -77,5 +77,55 @@ class BlockTableSeeder extends Seeder
             ]),
 
         ]);
+
+        Block::create([
+            'name'        => 'lps_block3',
+            'template_id' => 1,
+            'position'    => 3,
+            'details'     => json_encode([
+                'image'        => '',
+                'title_strong' => 'Titulo Strong',
+                'title'        => ' Titulo default',
+                'image'        => '',
+                'descriptions'=>[
+
+                    'description1' => [
+                        'title'     => 'Fully responsive',
+                        'icon'     => 'fas fa-tablet-alt blue-text',
+                        'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.'
+                    ],
+
+                    'description2' => [
+                        'title'    => 'Frequent updates',
+                        'icon'     => 'fas fa-level-up-alt blue-text',
+                        'text'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.'
+                    ],
+
+                    'description3' => [
+                        'title'    => 'Technical support',
+                        'icon'     => 'fas fa-phone blue-text',
+                        'text'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.'
+                    ],
+
+                    'description4' => [
+                        'title'    => 'Editable layout',
+                        'icon'     => 'far fa-object-group blue-text',
+                        'text'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.'
+                    ],
+
+                    'description5' => [
+                        'title'    => 'Fast and powerful',
+                        'icon'     => 'fas fa-rocket blue-text',
+                        'text'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.'
+                    ],
+                    'description6' => [
+                        'title'    => 'Cloud storage',
+                        'icon'     => 'fas fa-cloud-upload-alt blue-text',
+                        'text'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.'
+                    ]
+                ]
+            ]),
+
+        ]);
     }
 }
