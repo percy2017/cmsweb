@@ -72,9 +72,16 @@ class TemplateController extends Controller
 
     public function json($block_id)
     {
-        $block = Template::where('id', $block_id)->first();
+        $block = Block::where('id', $block_id)->first();
         return view('vendor.template.json', [
             'block' => $block
         ]);
+
+       
+    }
+
+    public function save(Request $data)
+    {
+        return $data;
     }
 }

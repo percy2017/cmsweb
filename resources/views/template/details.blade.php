@@ -141,11 +141,9 @@
                                 </div>
                                 <!-- Card body -->
                                 <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
-
                                     <div class="card-body">
                                         <ul>
                                             @foreach(json_decode($collection->block_id) as $file)
-                                            
                                                 <li>{{ $file }}</li>
                                             @endforeach
                                         </ul>

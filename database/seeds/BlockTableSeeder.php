@@ -18,8 +18,8 @@ class BlockTableSeeder extends Seeder
             'template_id' => 1,
             'position'    => 1,
             'details'     => json_encode([
-                'title_strong' => 'Titulo Strong  1',
-                'title'        => ' Titulo default 1',
+                'title_strong' => 'Mi titulo',
+                'title'        => 'Titulo default 1',
                 'descripcion'  => 'Descripcion del blocke #1',
                 'icons' => [
                     'icons1' => [
@@ -38,8 +38,19 @@ class BlockTableSeeder extends Seeder
                         'descripcion' => 'Descripcion #3'
                     ]
                 ]
+                // "object1" => [
+                //     "name" => "titulo_strong",
+                //     "type" => "text"
+                // ],
+                // "object2" => [
+                //     "name" => "titulo_default",
+                //     "type" => "text"
+                // ],
+                // "object3" => [
+                //     "name" => "parrafo_default",
+                //     "type" => "text_area"
+                // ]
             ]),
-
         ]);
 
         Block::create([
