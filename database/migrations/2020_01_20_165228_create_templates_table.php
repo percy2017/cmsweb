@@ -27,6 +27,10 @@ class CreateTemplatesTable extends Migration
             $table->string('bussine_id')->nullable();
             $table->string('tag_id')->nullable();
             $table->string('template_id')->nullable();
+            $table->integer('rating')->nullable();
+
+           // $table->foreign('block_id')->references('id')->on('blocks');
+
             $table->timestamps();
             $table->softDeletes();
         });

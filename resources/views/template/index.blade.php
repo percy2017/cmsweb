@@ -67,14 +67,14 @@
                         <!-- Title -->
                         <h4 class="card-title font-weight-bold"><a>{{ $item->name }}</a></h4>
                         <!-- Data -->
-                        <ul class="list-unstyled list-inline rating mb-0">
+                       {{--  <ul class="list-unstyled list-inline rating mb-0">
                         <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"> </i></li>
                         <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
                         <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
                         <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
                         <li class="list-inline-item"><i class="fas fa-star-half-alt amber-text"></i></li>
                         <li class="list-inline-item"><p class="text-muted">4.5 (413)</p></li>
-                        </ul>
+                        </ul> --}}
                         <p class="mb-2">Bs. • Gratis • {{ $item->category_id }}</p>
                         <!-- Text -->
                         <p class="card-text">

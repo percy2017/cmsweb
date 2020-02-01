@@ -21,6 +21,7 @@ class CreateBlocksTable extends Migration
             $table->text('details')->nullable();
             
             $table->foreign('template_id')->references('id')->on('templates');
+            
             $table->timestamps();
             $table->softDeletes();
         });
