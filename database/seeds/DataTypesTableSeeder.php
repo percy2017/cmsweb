@@ -67,7 +67,7 @@ class DataTypesTableSeeder extends Seeder
                 // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
                 'generate_permissions'  => 1,
                 'description'           => '',
-                'server_side'           => 0,
+                'server_side'           => 1,
             ])->save();
         }
 
@@ -101,35 +101,33 @@ class DataTypesTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataType = $this->dataType('slug', 'comments');
-        if (!$dataType->exists) {
-            $dataType->fill([
-                'name'                  => 'comments',
-                'display_name_singular' => 'Comentario',
-                'display_name_plural'   => 'Comentarios',
-                'icon'                  => 'voyager-bubble',
-                'model_name'            => 'App\\Comment',
-                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
-                'generate_permissions'  => 1,
-                'description'           => '',
-                'server_side'           => 0,
-            ])->save();
-        }
+        // $dataType = $this->dataType('slug', 'comments');
+        // if (!$dataType->exists) {
+        //     $dataType->fill([
+        //         'name'                  => 'comments',
+        //         'display_name_singular' => 'Comentario',
+        //         'display_name_plural'   => 'Comentarios',
+        //         'icon'                  => 'voyager-bubble',
+        //         'model_name'            => 'App\\Comment',
+        //         'generate_permissions'  => 1,
+        //         'description'           => '',
+        //         'server_side'           => 0,
+        //     ])->save();
+        // }
 
-        $dataType = $this->dataType('slug', 'posts');
-        if (!$dataType->exists) {
-            $dataType->fill([
-                'name'                  => 'posts',
-                'display_name_singular' => 'Post',
-                'display_name_plural'   => 'Posts',
-                'icon'                  => 'voyager-pen',
-                'model_name'            => 'App\\Post',
-                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
-                'generate_permissions'  => 1,
-                'description'           => '',
-                'server_side'           => 0,
-            ])->save();
-        }
+        // $dataType = $this->dataType('slug', 'posts');
+        // if (!$dataType->exists) {
+        //     $dataType->fill([
+        //         'name'                  => 'posts',
+        //         'display_name_singular' => 'Post',
+        //         'display_name_plural'   => 'Posts',
+        //         'icon'                  => 'voyager-pen',
+        //         'model_name'            => 'App\\Post',
+        //         'generate_permissions'  => 1,
+        //         'description'           => '',
+        //         'server_side'           => 0,
+        //     ])->save();
+        // }
         
     }
 

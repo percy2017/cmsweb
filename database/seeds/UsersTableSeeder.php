@@ -20,5 +20,14 @@ class UsersTableSeeder extends Seeder
             'avatar' => null,
             'password' => Hash::make('password')
         ]);
+
+        User::create([
+            'role_id' => 2,
+            'name' => 'editor',
+            'email' => 'luis.flores@gmail.com',
+            'avatar' => null,
+            'password' => Hash::make('password')
+        ]);
+
     }
 }

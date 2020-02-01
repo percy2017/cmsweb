@@ -18,19 +18,19 @@ class Blocks extends AbstractAction
 
     public function getPolicy()
     {
-        return 'read';
+        return 'edit';
     }
 
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-primary pull-right',
+            'class' => 'btn btn-sm btn-success pull-right',
         ];
     }
 
     public function getDefaultRoute()
     {
-        return route('template_json', $this->data->{$this->data->getKeyName()});
+        return route('voyager.blocks.edit', $this->data->{$this->data->getKeyName()});
     }
 
     public function shouldActionDisplayOnDataType()

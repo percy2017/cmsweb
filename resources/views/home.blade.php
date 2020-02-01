@@ -30,9 +30,9 @@
   
               <p class="text-muted"><small>Bienvenido al mejor CmsWeb</small></p>
               <div class="row flex-center">
-                @if(Auth::user()->role->id == 1)
+                {{--  @if(Auth::user()->role->id == 1)  --}}
                 <a class="btn btn-info btn-rounded btn-sm" href="{{ route('voyager.dashboard') }}">Ir a Panel</a>
-                @endif
+                {{--  @endif  --}}
                 <a class="btn btn-danger btn-rounded btn-sm" href="/">Volver</a>
               </div>
             </div>

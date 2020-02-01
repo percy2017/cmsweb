@@ -30,8 +30,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/templates/update/{id}', 'TemplateController@update')->name('template_update');
     Route::get('/templates/{name_short}', 'TemplateController@change')->name('template_change');
-    Route::get('/templates/blocks/{block_id}/edit', 'TemplateController@json')->name('template_json');
-    Route::get('/templates/json/save', 'TemplateController@save')->name('template_save');
+    // Route::get('/templates/blocks/{block_id}/edit', 'TemplateController@json')->name('template_json');
+    // Route::get('/templates/json/save', 'TemplateController@save')->name('template_save');
   
 });
 
