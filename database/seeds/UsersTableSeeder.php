@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'role_id' => 2,
+            'role_id' => 1,
             'name' => 'editor',
             'email' => 'luis.flores@gmail.com',
             'avatar' => null,

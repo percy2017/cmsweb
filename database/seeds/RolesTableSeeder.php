@@ -17,11 +17,11 @@ class RolesTableSeeder extends Seeder
                 ])->save();
         }
 
-        $role = Role::firstOrNew(['name' => 'editor']);
-        if (!$role->exists) {
-            $role->fill([
-                    'display_name' => 'Editor de Contenido',
-                ])->save();
-        }
+        // $role = Role::firstOrNew(['name' => 'editor']);
+        // if (!$role->exists) {
+        //     $role->fill([
+        //             'display_name' => 'Editor de Contenido',
+        //         ])->save();
+        // }
     }
 }
