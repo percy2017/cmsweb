@@ -12,9 +12,16 @@
 */
 Route::middleware(['canInstall'])->group(function () {
     Route::get('/', 'FrontendController@default')->name('template');
-    Route::get('/politicas-condiciones', 'FrontendController@politicas')->name('template_politicas');
-    Route::get('/plantillas', 'FrontendController@index')->name('template_index');
+
+    Route::get('/pages/{slug}', 'FrontendController@pages')->name('template_pages');
+
+    // Route::get('/politicas-condiciones', 'FrontendController@politicas')->name('template_politicas');
+    // Route::get('/app-movil', 'FrontendController@app')->name('template_app');
+
+    Route::get('/plantillas-web', 'FrontendController@index')->name('template_index');
+    
     Route::get('/plantillas/{slug}', 'FrontendController@details')->name('template_details');
+    Route::get('/plantillas/change/{slug}', 'FrontendController@change')->name('template_change');
     
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('login/github', 'Auth\LoginController@redirectToProvider');
@@ -28,11 +35,12 @@ Route::middleware(['canInstall'])->group(function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
-    Route::get('/templates/update/{id}', 'TemplateController@update')->name('template_update');
-    Route::get('/templates/{name_short}', 'TemplateController@change')->name('template_change');
-    // Route::get('/templates/blocks/{block_id}/edit', 'TemplateController@json')->name('template_json');
-    // Route::get('/templates/json/save', 'TemplateController@save')->name('template_save');
-  
+    // Route::get('blocks/{json}/{id}/store', 'TemplateController@store')->name('block_store');
+    // Route::get('blocks/{id}/edit', 'TemplateController@edit')->name('block_edit');
+
+    Route::post('templates/{block_id}/blocks/update', 'TemplateController@block_update')->name('template_update');
+    Route::get('templates/{id}/blocks/store', 'TemplateController@store')->name('template_store');
+    Route::get('templates/{template_id}/blocks', 'TemplateController@blocks')->name('template_blocks');
 });
 
 

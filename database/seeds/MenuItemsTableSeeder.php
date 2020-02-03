@@ -94,6 +94,21 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }        
 
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Paginas',
+            'url'     => '',
+            'route'   => 'voyager.pages.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-archive',
+                'color'      => null,
+                'parent_id'  => $ConfigMenuItem->id,
+                'order'      => 5,
+            ])->save();
+        } 
 
         // $menuItem = MenuItem::firstOrNew([
         //     'menu_id' => $menu->id,
@@ -256,6 +271,7 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
+        
         // ------------ Herramientas -----------------------
         // -------------------------------------------------
 
@@ -282,8 +298,8 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Politica & Condiciones',
-            'url'     => '/politicas',
+            'title'   => 'Applicacion Movil',
+            'url'     => '/pages/app-movil',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {
@@ -298,8 +314,8 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Plantillas',
-            'url'     => '/plantillas',
+            'title'   => 'Plantillas Web',
+            'url'     => '/plantillas-web',
             'route'   => null,
         ]);
         if (!$menuItem->exists) {

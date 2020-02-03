@@ -26,21 +26,28 @@ class PermissionsTableSeeder extends Seeder
         }
 
         Permission::generateFor('menus');
-
         Permission::generateFor('roles');
-
         Permission::generateFor('users');
-
         Permission::generateFor('settings');
-
         Permission::generateFor('templates');
-
         Permission::generateFor('blocks');
-
         Permission::generateFor('comments');
-
+        Permission::generateFor('pages');
         // Permission::generateFor('products');
-
         // Permission::generateFor('posts');
+
+
+        
+        $mykeys = [
+            'route_bloks-json',
+        ];
+
+        foreach ($mykeys as $key) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'table_name' => 'CmsWeb',
+            ]);
+        }
+
     }
 }

@@ -126,15 +126,14 @@
 
   <!--Main content-->
   <main>
-    
-    @foreach ($blocks as $item)
-    
-   
+    @foreach ($blocks as $item) 
       @include('template.blocks.'.$item->name, ['data' => json_decode($item->details)])
     @endforeach
   </main>
   <!--Main content-->
 
+
+  
   <!--Footer-->
   <footer class="page-footer text-center text-md-left blue-grey lighten-5 pt-0">
 

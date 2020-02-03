@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Template;
 use App\Block;
+use App\Page;
 use NumerosEnLetras;
+use Illuminate\Support\Facades\DB;
 class FrontendController extends Controller
 {
     function default()
@@ -89,5 +91,25 @@ class FrontendController extends Controller
     {
         $collection = Template::where('slug', $slug)->first();
         return view('template.details')->with(compact('collection'));
+    }
+
+    public function change($slug)
+    {
+        DB::table('settings')
+            ->where('key', 'site.template')
+            ->update(['value' => $slug]);
+
+        return back()->with([
+            'message'    => 'Plantilla Actualizada - '.$slug,
+            'alert-type' => 'success',
+        ]);
+    }
+
+    public function pages($slug)
+    {
+        $pages = Page::where('slug', $slug)->first();
+        return view('pages.'.$pages->slug, [
+            'pages' => $pages
+        ]);
     }
 }

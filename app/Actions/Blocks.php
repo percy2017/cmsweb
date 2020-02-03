@@ -30,7 +30,7 @@ class Blocks extends AbstractAction
 
     public function getDefaultRoute()
     {
-        return route('voyager.blocks.edit', $this->data->{$this->data->getKeyName()});
+        return route('template_blocks', $this->data->{$this->data->getKeyName()});
     }
 
     public function shouldActionDisplayOnDataType()

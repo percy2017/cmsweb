@@ -86,20 +86,34 @@ class DataTypesTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataType = $this->dataType('slug', 'products');
+        $dataType = $this->dataType('slug', 'pages');
         if (!$dataType->exists) {
             $dataType->fill([
-                'name'                  => 'products',
-                'display_name_singular' => 'Producto',
-                'display_name_plural'   => 'Productos',
-                'icon'                  => 'voyager-shop',
-                'model_name'            => 'App\\Product',
-                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'name'                  => 'pages',
+                'display_name_singular' => 'Page',
+                'display_name_plural'   => 'Pages',
+                'icon'                  => 'voyager-archive',
+                'model_name'            => 'App\\Page',
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           => 0,
             ])->save();
         }
+
+        // $dataType = $this->dataType('slug', 'products');
+        // if (!$dataType->exists) {
+        //     $dataType->fill([
+        //         'name'                  => 'products',
+        //         'display_name_singular' => 'Producto',
+        //         'display_name_plural'   => 'Productos',
+        //         'icon'                  => 'voyager-shop',
+        //         'model_name'            => 'App\\Product',
+        //         // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+        //         'generate_permissions'  => 1,
+        //         'description'           => '',
+        //         'server_side'           => 0,
+        //     ])->save();
+        // }
 
         // $dataType = $this->dataType('slug', 'comments');
         // if (!$dataType->exists) {

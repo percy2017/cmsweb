@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlocksTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateBlocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('blocks', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('template_id');
             $table->string('name');
-            $table->string('title');
-            $table->bigInteger('position');
             $table->string('description')->nullable();
+            $table->string('slug');
+            // $table->bigInteger('position')->nullable();
             $table->text('details')->nullable();
-            
-            $table->foreign('template_id')->references('id')->on('templates');
-            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,6 +32,6 @@ class CreateBlocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blocks');
+        Schema::dropIfExists('pages');
     }
 }
