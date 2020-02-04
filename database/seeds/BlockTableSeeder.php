@@ -16,8 +16,8 @@ class BlockTableSeeder extends Seeder
   
         Block::create([
             'name'        => 'lps_block1',
-            'title'       => 'Blocke #1 (features)',
-            'description' => 'Seccion Features para la plantilla LPS',
+            'title'       => 'Blocke #1 (features #1)',
+            'description' => 'Seccion Features #1 para la plantilla LPS',
             'template_id' => 1,
             'position'    => 1,
             'details'     => json_encode([
@@ -114,7 +114,7 @@ class BlockTableSeeder extends Seeder
             'description' => 'Seccion Download para la plantilla LPS',
             'template_id' => 1,
             'position'    => 2,
-            'details'     =>  json_encode([
+            'details'     => json_encode([
                 'image_donwload' => [
                     'type'   => 'image',
                     'name'   => 'image_donwload',
@@ -159,5 +159,38 @@ class BlockTableSeeder extends Seeder
                 ]
             ])
         ]);
+
+
+        Block::create([
+            'name'        => 'lps_block3',
+            'title'       => 'Blocke #3 (features #2)',
+            'description' => 'Seccion Features #2 para la plantilla LPS',
+            'template_id' => 1,
+            'position'    => 3,
+            'details'     => json_encode([
+                'title_strong' => [
+                    'type'   => 'text',
+                    'name'   => 'title_strong',
+                    'label'  => 'Titulo en Negrita',
+                    'value'  => 'Lorem ipsum',
+                    'width'  => 4
+                ],
+                'title_default' => [
+                    'type'  => 'text',
+                    'name'  => 'title_default',
+                    'label' => 'Titulo Normal',
+                    'value' => 'dolor sit amet',
+                    'width'  => 4
+                ],
+                'image_principal' => [
+                    'type'   => 'image',
+                    'name'   => 'image_principal',
+                    'label'  => 'Image Princiapal,',
+                    'value'  => 'default.png',
+                    'width'  => 4
+                ],
+            ])
+        ]);
+
     }
 }

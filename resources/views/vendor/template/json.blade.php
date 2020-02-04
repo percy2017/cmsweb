@@ -18,7 +18,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title panel-icon"><i class="voyager-bread"></i>{{ $block->title }}</h3>
                             <div class="panel-actions">
-                                <a class="panel-action voyager-angle-up" data-toggle="panel-collapse" aria-hidden="true"></a>
+                                <a class="panel-action voyager-angle-up" data-toggle="panel-collapse"></a>
                             </div>
                         </div>
 
@@ -45,8 +45,8 @@
                                             <div class="form-group col-md-{{ $value['width'] }}">
                                                 <label>{{ $value['label'] }}</label>
                                                 <a href="#" class="voyager-x remove-single-image" style="position:absolute;">Delete</a>
-                                                <img src="" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
-                                                <input type="file" name="" accept="image/*">
+                                                <img src="{{ Voyager::image($value['value']) }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
+                                                <input type="file" name="{{ $value['name'] }}" accept="image/*">
                                             </div>
                                             @break
                                     @endswitch

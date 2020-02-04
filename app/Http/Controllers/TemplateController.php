@@ -7,6 +7,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Template;
 use App\Block;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 class TemplateController extends Controller
 {
     public function change($template_change)
@@ -32,14 +33,21 @@ class TemplateController extends Controller
 
     public function block_update(Request $request, $block_id)
     {
-        // return $request['title_strong'];
         $block = Block::where('id', $block_id)->first();
         
         $mijson = $block->details;
         
         foreach(json_decode($block->details, true) as $item => $value)
         {
-            $mijson = str_replace($value['value'], $request[$value['name']], $mijson);   
+              
+            if($request->hasFile($value['name']))
+            {
+                $dirimage = Storage::disk('public')->put('blocks/'.date('F').date('Y'), $request->file($value['name']));
+                $mijson = str_replace($value['value'], $dirimage, $mijson);
+                
+            }else{
+                $mijson = str_replace($value['value'], $request[$value['name']], $mijson);
+            }
         }
         $block->details = $mijson;
         $block->save();
