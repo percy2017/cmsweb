@@ -100,6 +100,20 @@ class DataTypesTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'excels');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'excels',
+                'display_name_singular' => 'Import/Export',
+                'display_name_plural'   => 'Imports/Exports',
+                'icon'                  => 'voyager-upload',
+                'model_name'            => 'App\\Excel',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+
         // $dataType = $this->dataType('slug', 'products');
         // if (!$dataType->exists) {
         //     $dataType->fill([

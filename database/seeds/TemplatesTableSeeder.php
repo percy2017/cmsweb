@@ -11,6 +11,9 @@ class TemplatesTableSeeder extends Seeder
      */
     public function run()
     {
+
+        // Landng Page---------------
+        // -------------------------
         Template::create([
             'name' => 'Landing Page Software',
             'slug' => 'landing-page-software',
@@ -137,6 +140,8 @@ class TemplatesTableSeeder extends Seeder
             'category_id' => 'Landing Page',
         ]);
 
+
+
         // ---------- ECOMMERCE ------------
         // --------------------------------
         Template::create([
@@ -165,6 +170,28 @@ class TemplatesTableSeeder extends Seeder
             'image' => 'vendor/admin/images/ecommerce3.png',
             'category_id' => 'E-Commerce',
         ]);
+
+
+        
+        // Default -----------------
+        Template::create([
+            'name' => 'Layout Default',
+            'slug' => 'default',
+            'name_short' => 'default',
+            'description' => 'Layout default del CmsWeb',
+            'image' => 'default.png',
+            'category_id' => 'Landing Page',
+        ]); 
+
+             // Default -----------------
+             Template::create([
+                'name' => 'Layout Maps',
+                'slug' => 'maps',
+                'name_short' => 'maps',
+                'description' => 'Layout Maps del CmsWeb',
+                'image' => 'default.png',
+                'category_id' => 'Landing Page',
+            ]); 
         
     }
 }

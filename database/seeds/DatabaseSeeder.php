@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TemplatesTableSeeder::class);
         $this->call(BlockTableSeeder::class);
         $this->call(PageTableSeeder::class);
+        $this->call(ExcelsTableSeeder::class);
     }
 }

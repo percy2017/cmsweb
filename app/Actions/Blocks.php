@@ -24,7 +24,7 @@ class Blocks extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-success pull-right',
+            'class' => 'btn btn-sm btn-success',
         ];
     }
 

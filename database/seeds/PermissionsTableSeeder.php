@@ -33,19 +33,21 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('blocks');
         Permission::generateFor('comments');
         Permission::generateFor('pages');
+        // Permission::generateFor('excels');
         // Permission::generateFor('products');
         // Permission::generateFor('posts');
 
 
         
-        $mykeys = [
-            'route_bloks-json',
+        $excelkeys = [
+            'browse_excels',
+            'read_excels',
         ];
 
-        foreach ($mykeys as $key) {
+        foreach ($excelkeys as $key) {
             Permission::firstOrCreate([
                 'key'        => $key,
-                'table_name' => 'CmsWeb',
+                'table_name' => 'excels',
             ]);
         }
 

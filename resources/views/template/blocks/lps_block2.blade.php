@@ -10,7 +10,8 @@
 
             <!-- First column -->
             <div class="col-lg-7 col-md-12 mb-4 text-center">
-              <img src="https://mdbootstrap.com/img/Photos/Others/screen.jpg" alt=""
+            
+              <img src="{{ voyager::Image($data->image_donwload->value) }}" alt="{{ $data->image_donwload->value }}"
                 class="img-fluid z-depth-2 rounded">
             </div>
             <!-- /First column -->

@@ -45,8 +45,37 @@
                                             <div class="form-group col-md-{{ $value['width'] }}">
                                                 <label>{{ $value['label'] }}</label>
                                                 <a href="#" class="voyager-x remove-single-image" style="position:absolute;">Delete</a>
-                                                <img src="{{ Voyager::image($value['value']) }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
+                                     
+                                                <img src="{{ Voyager::Image($value['value']) }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                                 <input type="file" name="{{ $value['name'] }}" accept="image/*">
+                                            </div>
+                                            @break
+                                        @case('select_dropdown')
+                                            <div class="form-group col-md-{{ $value['width'] }}">
+                                                @php
+                                                    $miarray = [
+                                                        'fas fa-cogs blue-text',
+                                                        'fas fa-book blue-text',
+                                                        'fas fa-users blue-text',
+                                                        'fas fa-tablet-alt blue-text',
+                                                        'fas fa-level-up-alt blue-text',
+                                                        'fas fa-phone blue-text',
+                                                        'far fa-object-group blue-text',
+                                                        'fas fa-rocket blue-text',
+                                                        'fas fa-cloud-upload-alt blue-text',
+                                                        'fas fa-home blue-text',
+                                                        'fas fa-users white-text',
+                                                        'fas fa-chart-bar blue-text'
+                                                    ];
+                                                @endphp
+                                                <label>{{ $value['label'] }}</label>
+                                                <select class="form-control select2" name="{{ $value['name'] }}">
+                                                    @foreach ($miarray as $item)
+                                                        <option value="{{ $item }}" @if($value['value'] === $item)selected="selected"@endif>
+                                                            {{ $item }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             @break
                                     @endswitch
@@ -54,7 +83,7 @@
                                 <hr />
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-primary">Guardar este Blocke</button>
-                                    <a href="#" class="btn btn-danger">Eliminar este Blocke</a>
+                                    <a href="{{ route('template_delete', $block->id) }}" class="btn btn-danger">Eliminar este Blocke</a>
                                 </div>
                             </form>
                         </div>

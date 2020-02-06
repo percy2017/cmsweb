@@ -18,6 +18,7 @@ class DataRowsTableSeeder extends Seeder
         // $productDataType = DataType::where('slug', 'products')->firstOrFail();
         $blockDataType = DataType::where('slug', 'blocks')->firstOrFail();
         $PageDataType = DataType::where('slug', 'pages')->firstOrFail();
+        $ExcelDataType = DataType::where('slug', 'excels')->firstOrFail();
 
         $dataRow = $this->dataRow($userDataType, 'id');
         if (!$dataRow->exists) {
@@ -205,6 +206,7 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        // menus ----------------------------------------------
         $dataRow = $this->dataRow($menuDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -1111,7 +1113,7 @@ class DataRowsTableSeeder extends Seeder
 
 
 
-             // Pages --------------------------------------------------
+        // Pages --------------------------------------------------
         // -----------------------------------------------------------
         $dataRow = $this->dataRow($PageDataType, 'id');
         if (!$dataRow->exists) {
@@ -1248,6 +1250,89 @@ class DataRowsTableSeeder extends Seeder
         }
 
         // -------------------------------------------------------------
+
+
+        // Excels --------------------------------------------------
+        // -----------------------------------------------------------
+        $dataRow = $this->dataRow($ExcelDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 1,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($ExcelDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($ExcelDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 16,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($ExcelDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 17,
+            ])->save();
+        }
+       
+        $dataRow = $this->dataRow($ExcelDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.deleted_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 18,
+            ])->save();
+        }
 
     }
 

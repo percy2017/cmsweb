@@ -271,6 +271,21 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Excels',
+            'url'     => '',
+            'route'   => 'voyager.excels.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-upload',
+                'color'      => null,
+                'parent_id'  => $toolsMenuItem->id,
+                'order'      => 6,
+            ])->save();
+        }
         
         // ------------ Herramientas -----------------------
         // -------------------------------------------------

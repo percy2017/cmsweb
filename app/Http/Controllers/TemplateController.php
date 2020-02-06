@@ -8,6 +8,7 @@ use App\Template;
 use App\Block;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 class TemplateController extends Controller
 {
     public function change($template_change)
@@ -54,6 +55,15 @@ class TemplateController extends Controller
         
         return back()->with([
             'message'    => 'Block Actualizada - '.$block->title,
+            'alert-type' => 'success',
+        ]);
+    }
+
+    public function delete($block_id)
+    {
+        Block::where('id', $block_id)->delete();
+        return back()->with([
+            'message'    => 'Block eliminado',
             'alert-type' => 'success',
         ]);
     }

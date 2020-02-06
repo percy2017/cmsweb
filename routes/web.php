@@ -35,12 +35,16 @@ Route::middleware(['canInstall'])->group(function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
-    // Route::get('blocks/{json}/{id}/store', 'TemplateController@store')->name('block_store');
-    // Route::get('blocks/{id}/edit', 'TemplateController@edit')->name('block_edit');
+   
 
     Route::post('templates/{block_id}/blocks/update', 'TemplateController@block_update')->name('template_update');
     Route::get('templates/{id}/blocks/store', 'TemplateController@store')->name('template_store');
     Route::get('templates/{template_id}/blocks', 'TemplateController@blocks')->name('template_blocks');
+    Route::get('templates/{template_id}/blocks/delete', 'TemplateController@delete')->name('template_delete');
+
+
+    Route::post('/excels/import/storage', 'ExcelController@import')->name('excels_import');
+
 });
 
 
