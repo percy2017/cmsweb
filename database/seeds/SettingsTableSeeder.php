@@ -62,7 +62,7 @@ class SettingsTableSeeder extends Seeder
         if (!$setting->exists) {
             $setting->fill([
                 'display_name' => 'Plantillas',
-                'value'        => 'LPS',
+                'value'        => 'LPR',
                 'details'      => '',
                 'type'         => 'text',
                 'order'        => 5,

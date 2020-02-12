@@ -15,7 +15,7 @@ class FrontendController extends Controller
         $template = setting('site.template');
         $collection = Template::where('name_short', $template)->first();
         $blocks = Block::where('template_id', $collection->id)->get();
-
+        
         return view("template.".$collection->name_short, compact('collection', 'blocks'));
     }
     function politicas()
