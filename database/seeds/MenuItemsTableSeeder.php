@@ -48,14 +48,14 @@ class MenuItemsTableSeeder extends Seeder
 
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.roles'),
+            'title'   => 'Mensajes',
             'url'     => '',
-            'route'   => 'voyager.roles.index',
+            'route'   => 'voyager.messages.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-lock',
+                'icon_class' => 'voyager-external',
                 'color'      => null,
                 'parent_id'  => $ConfigMenuItem->id,
                 'order'      => 2,

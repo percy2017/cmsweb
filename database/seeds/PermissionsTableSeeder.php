@@ -33,23 +33,10 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('blocks');
         Permission::generateFor('comments');
         Permission::generateFor('pages');
-        // Permission::generateFor('excels');
-        // Permission::generateFor('products');
-        // Permission::generateFor('posts');
-
-
-        
-        $excelkeys = [
-            'browse_excels',
-            'read_excels',
-        ];
-
-        foreach ($excelkeys as $key) {
-            Permission::firstOrCreate([
-                'key'        => $key,
-                'table_name' => 'excels',
-            ]);
-        }
+        Permission::generateFor('excels');
+        Permission::generateFor('products');
+        Permission::generateFor('posts');
+        Permission::generateFor('messages');
 
     }
 }

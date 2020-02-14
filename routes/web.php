@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/excels/import/storage', 'ExcelController@import')->name('excels_import');
 
+    Route::post('/messages/send', 'MessageController@send')->name('messages_send');
+
 });
 
 

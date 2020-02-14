@@ -29,5 +29,10 @@ class AppServiceProvider extends ServiceProvider
 
         Voyager::addAction(\App\Actions\ExcelImport::class);
         Voyager::addAction(\App\Actions\ExcelExport::class);
+
+        Voyager::addAction(\App\Actions\Roles::class);
+
+        Voyager::addAction(\App\Actions\Messages::class);
+        Voyager::addAction(\App\Actions\Chats::class);
     }
 }

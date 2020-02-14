@@ -114,49 +114,62 @@ class DataTypesTableSeeder extends Seeder
             ])->save();
         }
 
-        // $dataType = $this->dataType('slug', 'products');
-        // if (!$dataType->exists) {
-        //     $dataType->fill([
-        //         'name'                  => 'products',
-        //         'display_name_singular' => 'Producto',
-        //         'display_name_plural'   => 'Productos',
-        //         'icon'                  => 'voyager-shop',
-        //         'model_name'            => 'App\\Product',
-        //         // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
-        //         'generate_permissions'  => 1,
-        //         'description'           => '',
-        //         'server_side'           => 0,
-        //     ])->save();
-        // }
+        $dataType = $this->dataType('slug', 'products');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'products',
+                'display_name_singular' => 'Producto',
+                'display_name_plural'   => 'Productos',
+                'icon'                  => 'voyager-shop',
+                'model_name'            => 'App\\Product',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
 
-        // $dataType = $this->dataType('slug', 'comments');
-        // if (!$dataType->exists) {
-        //     $dataType->fill([
-        //         'name'                  => 'comments',
-        //         'display_name_singular' => 'Comentario',
-        //         'display_name_plural'   => 'Comentarios',
-        //         'icon'                  => 'voyager-bubble',
-        //         'model_name'            => 'App\\Comment',
-        //         'generate_permissions'  => 1,
-        //         'description'           => '',
-        //         'server_side'           => 0,
-        //     ])->save();
-        // }
+        $dataType = $this->dataType('slug', 'comments');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'comments',
+                'display_name_singular' => 'Comentario',
+                'display_name_plural'   => 'Comentarios',
+                'icon'                  => 'voyager-bubble',
+                'model_name'            => 'App\\Comment',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
 
-        // $dataType = $this->dataType('slug', 'posts');
-        // if (!$dataType->exists) {
-        //     $dataType->fill([
-        //         'name'                  => 'posts',
-        //         'display_name_singular' => 'Post',
-        //         'display_name_plural'   => 'Posts',
-        //         'icon'                  => 'voyager-pen',
-        //         'model_name'            => 'App\\Post',
-        //         'generate_permissions'  => 1,
-        //         'description'           => '',
-        //         'server_side'           => 0,
-        //     ])->save();
-        // }
+        $dataType = $this->dataType('slug', 'posts');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'posts',
+                'display_name_singular' => 'Post',
+                'display_name_plural'   => 'Posts',
+                'icon'                  => 'voyager-pen',
+                'model_name'            => 'App\\Post',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
         
+        $dataType = $this->dataType('slug', 'messages');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'messages',
+                'display_name_singular' => 'Message',
+                'display_name_plural'   => 'Messages',
+                'icon'                  => 'voyager-external',
+                'model_name'            => 'App\\Message',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
     }
 
     /**
