@@ -999,6 +999,31 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($productDetailsDataType, 'products_belongsto_role_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Productos',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'model'       => 'App\\Product',
+                    'table'       => 'products',
+                    'type'        => 'belongsTo',
+                    'column'      => 'user_id',
+                    'key'         => 'id',
+                    'label'       => 'display_name',
+                    'pivot_table' => 'products',
+                    'pivot'       => 0,
+                ],
+                'order'        => 10,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($productDetailsDataType, 'description');
         if (!$dataRow->exists) {
             $dataRow->fill([
