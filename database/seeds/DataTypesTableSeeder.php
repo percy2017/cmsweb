@@ -185,6 +185,34 @@ class DataTypesTableSeeder extends Seeder
                 'server_side'           => 0,
             ])->save();
         }
+
+        $dataType = $this->dataType('slug', 'accounts');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'accounts',
+                'display_name_singular' => 'Account',
+                'display_name_plural'   => 'Accounts',
+                'icon'                  => 'voyager-tv',
+                'model_name'            => 'App\\Account',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'profiles');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'profiles',
+                'display_name_singular' => 'Profile',
+                'display_name_plural'   => 'Profiles',
+                'icon'                  => 'voyager-person',
+                'model_name'            => 'App\\Account',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
     }
 
     /**

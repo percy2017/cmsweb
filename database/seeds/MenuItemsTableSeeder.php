@@ -274,6 +274,57 @@ class MenuItemsTableSeeder extends Seeder
         }
         //E-Commerce------------------------------------------------
         
+        // ------------ streaming -----------------------
+        // -------------------------------------------------
+        $streamingMenuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Streaming',
+            'url'     => '',
+        ]);
+        if (!$streamingMenuItem->exists) {
+            $streamingMenuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-tv',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 4,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Cuentas',
+            'url'     => '',
+            'route'   => 'voyager.accounts.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $streamingMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Perfiles',
+            'url'     => '',
+            'route'   => 'voyager.profiles.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $streamingMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+        //streaming------------------------------------------------
+
+
 
         // ------------------- Menu Primary ----------------------------------------
         // -------------------------------------------------
@@ -379,6 +430,7 @@ class MenuItemsTableSeeder extends Seeder
         }
         // Menu Social ----------------------------------------
 
+        
 
     }
 }

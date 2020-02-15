@@ -38,6 +38,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('product_details');
         Permission::generateFor('posts');
         Permission::generateFor('messages');
-
+        Permission::generateFor('accounts');
+        Permission::generateFor('profiles');
     }
 }
