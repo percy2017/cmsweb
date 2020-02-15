@@ -957,6 +957,26 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($productDetailsDataType, 'price');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Precio',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($productDetailsDataType, 'images');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -982,7 +1002,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'text_area',
                 'display_name' => 'Descripcion',
-                'required'     => 1,
+                'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,

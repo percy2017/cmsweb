@@ -18,8 +18,8 @@ class CreateProductDetailsTable extends Migration
             $table->unsignedBigInteger('product_id')->nullable();
             $table->string('title');
             $table->string('images')->nullable();
-            $table->double('price');
-            $table->text('descripction')->nullable();
+            $table->double('price')->nullable();
+            $table->text('description')->nullable();
             
             $table->timestamps();
             $table->softDeletes();
