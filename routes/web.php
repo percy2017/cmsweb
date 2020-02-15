@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['canInstall'])->group(function () {
+// Route::middleware(['canInstall'])->group(function () {
     Route::get('/', 'FrontendController@default')->name('template');
 
     Route::get('/pages/{slug}', 'FrontendController@pages')->name('template_pages');
@@ -28,7 +28,7 @@ Route::middleware(['canInstall'])->group(function () {
     Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
     
     Auth::routes();
-});
+// });
 
 
 
