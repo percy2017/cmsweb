@@ -15,12 +15,14 @@ class CreateProductDetailsTable extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id')->nullable();
             $table->string('title');
             $table->string('images')->nullable();
             $table->double('price')->nullable();
             $table->text('description')->nullable();
             
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
             $table->softDeletes();
         });

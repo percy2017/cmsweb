@@ -162,7 +162,7 @@ class BlockTableSeeder extends Seeder
 
 
         Block::create([
-            'name'        => 'lpr_block3',
+            'name'        => 'lps_block3',
             'title'       => 'Blocke #3 (features #2)',
             'description' => 'Seccion Features #2 para la plantilla LPS',
             'template_id' => 1,
