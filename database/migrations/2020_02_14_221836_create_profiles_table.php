@@ -21,6 +21,7 @@ class CreateProfilesTable extends Migration
             $table->dateTime('startdate');
             $table->dateTime('finaldate');
             $table->string('observation');
+            $table->string('membership');
 
         
             $table->unsignedBigInteger('account_id');

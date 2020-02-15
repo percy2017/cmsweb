@@ -199,7 +199,8 @@ class DataTypesTableSeeder extends Seeder
                 'server_side'           => 0,
             ])->save();
         }
-
+//BREAD Profiles-----------------------------------------
+//-------------------------------------------------------
         $dataType = $this->dataType('slug', 'profiles');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -207,7 +208,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'Profile',
                 'display_name_plural'   => 'Profiles',
                 'icon'                  => 'voyager-person',
-                'model_name'            => 'App\\Account',
+                'model_name'            => 'App\\Profile',
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           => 0,
