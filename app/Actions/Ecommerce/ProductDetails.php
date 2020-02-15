@@ -39,6 +39,7 @@ class ProductDetails extends AbstractAction
 
     public function getDefaultRoute()
     {
-        return route('voyager.product_details.index');
+        return route('e_details', $this->data->{$this->data->getKeyName()});
+        // return route('voyager.product_details.index');
     }
 }

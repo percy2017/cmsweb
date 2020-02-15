@@ -47,6 +47,9 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/messages/send', 'MessageController@send')->name('messages_send');
 
+
+    //Ecommerce
+    Route::get('/messages/send', 'EcommerceController@details')->name('e_details');
 });
 
 
