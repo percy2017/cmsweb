@@ -29,7 +29,6 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.users'),
@@ -45,7 +44,6 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Mensajes',
@@ -61,7 +59,6 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 2,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => __('voyager::seeders.menu_items.settings'),
@@ -77,7 +74,6 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 3,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Plantillas',
@@ -93,7 +89,6 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 4,
             ])->save();
         }        
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Paginas',
@@ -110,53 +105,7 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         } 
 
-        // $menuItem = MenuItem::firstOrNew([
-        //     'menu_id' => $menu->id,
-        //     'title'   => 'Blocks',
-        //     'url'     => '',
-        //     'route'   => 'voyager.blocks.index',
-        // ]);
-        // if (!$menuItem->exists) {
-        //     $menuItem->fill([
-        //         'target'     => '_self',
-        //         'icon_class' => 'voyager-github',
-        //         'color'      => null,
-        //         'parent_id'  => $ConfigMenuItem->id,
-        //         'order'      => 5,
-        //     ])->save();
-        // }   
-        
-        // $menuItem = MenuItem::firstOrNew([
-        //     'menu_id' => $menu->id,
-        //     'title'   => 'Productos',
-        //     'url'     => '',
-        //     'route'   => 'voyager.products.index',
-        // ]);
-        // if (!$menuItem->exists) {
-        //     $menuItem->fill([
-        //         'target'     => '_self',
-        //         'icon_class' => 'voyager-shop',
-        //         'color'      => null,
-        //         'parent_id'  => $ConfigMenuItem->id,
-        //         'order'      => 6,
-        //     ])->save();
-        // }  
 
-        // $menuItem = MenuItem::firstOrNew([
-        //     'menu_id' => $menu->id,
-        //     'title'   => 'Posts',
-        //     'url'     => '',
-        //     'route'   => 'voyager.posts.index',
-        // ]);
-        // if (!$menuItem->exists) {
-        //     $menuItem->fill([
-        //         'target'     => '_self',
-        //         'icon_class' => 'voyager-pen',
-        //         'color'      => null,
-        //         'parent_id'  => $ConfigMenuItem->id,
-        //         'order'      => 7,
-        //     ])->save();
-        // }  
         
         // ------------ Herramientas -----------------------
         // -------------------------------------------------
@@ -286,10 +235,44 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 6,
             ])->save();
         }
-        
         // ------------ Herramientas -----------------------
-        // -------------------------------------------------
 
+        
+
+
+        // ------------ E-Commerce -----------------------
+        // -------------------------------------------------
+        $ecommerceMenuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'E-Commerce',
+            'url'     => '',
+        ]);
+        if (!$ecommerceMenuItem->exists) {
+            $ecommerceMenuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-shop',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
+
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Productos',
+            'url'     => '',
+            'route'   => 'voyager.products.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $ecommerceMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+        //E-Commerce------------------------------------------------
         
 
         // ------------------- Menu Primary ----------------------------------------
@@ -342,9 +325,12 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 3,
             ])->save();
         }
+        // ------------------- Menu Primary ----------------------------------------
 
+        
 
         // Menu Social ----------------------------------------
+        //----------------------------------------------------
         $menu = Menu::where('name', 'social')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
@@ -361,7 +347,6 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 1,
             ])->save();
         }
-
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'twitter',
@@ -392,5 +377,8 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 3,
             ])->save();
         }
+        // Menu Social ----------------------------------------
+
+
     }
 }

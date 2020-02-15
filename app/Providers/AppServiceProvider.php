@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       
+        Voyager::addFormField(TrackingUsers::class);
     }
 
     /**
@@ -34,5 +34,8 @@ class AppServiceProvider extends ServiceProvider
 
         Voyager::addAction(\App\Actions\Messages::class);
         Voyager::addAction(\App\Actions\Chats::class);
+
+        Voyager::addAction(\App\Actions\Ecommerce\ProductDetails::class);
+        
     }
 }

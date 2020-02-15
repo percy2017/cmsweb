@@ -35,6 +35,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('pages');
         Permission::generateFor('excels');
         Permission::generateFor('products');
+        Permission::generateFor('product_details');
         Permission::generateFor('posts');
         Permission::generateFor('messages');
 

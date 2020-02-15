@@ -6,7 +6,7 @@ use TCG\Voyager\FormFields\AbstractHandler;
 
 class TrackingUsers extends AbstractHandler
 {
-    protected $codename = 'TrackingUsers';
+    protected $codename = 'tracking_user';
 
     public function createContent($row, $dataType, $dataTypeContent, $options)
     {

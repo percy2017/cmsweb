@@ -129,6 +129,21 @@ class DataTypesTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataType = $this->dataType('slug', 'product_details');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'product_details',
+                'display_name_singular' => 'Producto Detalle',
+                'display_name_plural'   => 'Producto Detalles',
+                'icon'                  => 'voyager-shop',
+                'model_name'            => 'App\\ProductDetail',
+                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
+        
         $dataType = $this->dataType('slug', 'comments');
         if (!$dataType->exists) {
             $dataType->fill([
