@@ -199,7 +199,8 @@ class DataTypesTableSeeder extends Seeder
                 'server_side'           => 0,
             ])->save();
         }
-
+//BREAD Profiles-----------------------------------------
+//-------------------------------------------------------
         $dataType = $this->dataType('slug', 'profiles');
         if (!$dataType->exists) {
             $dataType->fill([

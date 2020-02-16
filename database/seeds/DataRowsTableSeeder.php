@@ -1749,7 +1749,7 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        // Profiles --------------------------------------------------
+        // FORM Profiles --------------------------------------------------
         // -----------------------------------------------------------
         $dataRow = $this->dataRow($ProfileDataType, 'id');
         if (!$dataRow->exists) {
@@ -1890,34 +1890,29 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-
-
-        
-        // $dataRow = $this->dataRow($userDataType, 'user_belongsto_role_relationship');
-        // if (!$dataRow->exists) {
-        //     $dataRow->fill([
-        //         'type'         => 'relationship',
-        //         'display_name' => __('voyager::seeders.data_rows.role'),
-        //         'required'     => 0,
-        //         'browse'       => 1,
-        //         'read'         => 1,
-        //         'edit'         => 1,
-        //         'add'          => 1,
-        //         'delete'       => 0,
-        //         'details'      => [
-        //             'model'       => 'TCG\\Voyager\\Models\\Role',
-        //             'table'       => 'roles',
-        //             'type'        => 'belongsTo',
-        //             'column'      => 'role_id',
-        //             'key'         => 'id',
-        //             'label'       => 'display_name',
-        //             'pivot_table' => 'roles',
-        //             'pivot'       => 0,
-        //         ],
-        //         'order'        => 10,
-        //     ])->save();
-        // }
-
+        $dataRow = $this->dataRow($ProfileDataType, 'membership');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Membresia',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'options'=>[
+                        'Mensual'=>'Mensual',
+                        'Trimestral'=>'Trimestral'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
 
         $dataRow = $this->dataRow($ProfileDataType, 'profile_belongsto_account_relationship');
         if (!$dataRow->exists) {
@@ -1940,7 +1935,8 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'accounts',
                     'pivot'       => 0,
                 ],
-                'order'        => 10,
+                'order'        => 2,
+                
             ])->save();
         }
 
