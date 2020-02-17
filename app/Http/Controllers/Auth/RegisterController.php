@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Mail\MessageRegister;
+use Illuminate\Support\Facades\Mail;
 class RegisterController extends Controller
 {
     /*
@@ -53,7 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'captcha' => 'required|captcha',
+            // 'captcha' => 'required|captcha',
         ]);
     }
 
@@ -66,11 +67,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // return $data;
-        return User::create([
+        
+        Mail::to($data['email'])->send(new MessageRegister);
+        
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => 1,
         ]);
+       
+
+        return $user;
     }
 }

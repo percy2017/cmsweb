@@ -1,20 +1,30 @@
 @extends('voyager::master')
 
-{{--  @section('page_title', __('voyager::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))  --}}
+@section('page_title', __('voyager::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
+
+@section('page_header')
+    <div class="container-fluid">
+        <h1 class="page-title">
+            <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
+        </h1>
+    </div>
+@stop
 
 @section('css')
 
 @endsection
 @section('content')
+
     <div class="page-content container-fluid" id="voyagerBreadEditAdd">
         @include('voyager::alerts')
         <div class="row">
             @foreach ($blocks as $block)
-                {{--  {{ $item->details }}  --}}
-                {{--  <br />  --}}
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-9">
                     <div class="panel panel-primary panel-bordered">
-
+                        
                         <div class="panel-heading">
                             <h3 class="panel-title panel-icon"><i class="voyager-bread"></i>{{ $block->title }}</h3>
                             <div class="panel-actions">
@@ -23,10 +33,18 @@
                         </div>
 
                         <div class="panel-body">
-                            <h3 class="text-center">{{ $block->description }}</h3>
-                            <hr />
                             <form action="{{ route('template_update', $block->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                
+                                <h3 class="text-center">{{ $block->description }}</h3>
+                                <div class="col-md-offset-3 col-md-6">
+                                    <input type="number" class="form-control" name="position" value="{{ $block->position }}" />
+                                </div>
+                                <div class="col-md-12">
+                                    <hr />
+                                </div>
+                            
+                            
                                 @foreach (json_decode($block->details, true) as $item => $value)
                                     @switch($value['type'])
                                         @case('text')
@@ -80,8 +98,11 @@
                                             @break
                                     @endswitch
                                 @endforeach
-                                <hr />
-                                <div class="form-group text-center">
+                                {{--  <div class="form-group col-md-12">
+                                    <hr />
+                                </div>  --}}
+                                
+                                <div class="form-group text-center col-md-12">
                                     <button type="submit" class="btn btn-primary">Guardar este Blocke</button>
                                     <a href="{{ route('template_delete', $block->id) }}" class="btn btn-danger">Eliminar este Blocke</a>
                                 </div>
@@ -91,7 +112,7 @@
                     </div>
                 </div>
             @endforeach
-
+               
         </div>
     </div>
 @stop

@@ -12,9 +12,10 @@ class FrontendController extends Controller
 {
     function default()
     {
+        
         $template = setting('site.template');
         $collection = Template::where('name_short', $template)->first();
-        $blocks = Block::where('template_id', $collection->id)->get();
+        $blocks = Block::where('template_id', $collection->id)->orderBy('position', 'asc')->get();
         // return $blocks;
         return view("template.".$collection->name_short, compact('collection', 'blocks'));
     }

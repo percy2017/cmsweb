@@ -18,7 +18,7 @@ class Blocks extends AbstractAction
 
     public function getPolicy()
     {
-        return 'edit';
+        return 'browse';
     }
 
     public function getAttributes()

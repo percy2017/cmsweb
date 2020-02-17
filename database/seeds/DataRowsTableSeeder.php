@@ -447,8 +447,8 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'image',
                 'display_name' => 'Imagen Pincipal',
-                'required'     => 1,
-                'browse'       => 1,
+                'required'     => 0,
+                'browse'       => 0,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -532,7 +532,7 @@ class DataRowsTableSeeder extends Seeder
                 'type'         => 'select_dropdown',
                 'display_name' => 'Categoria',
                 'required'     => 0,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
@@ -541,7 +541,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => [
                     'options' => [
                         'Landing Page' => 'Landing Page',
-                        'E-commerce' => 'E-commerce',
+                        'E-Commerce' => 'E-Commerce',
                     ]
                 ]
             ])->save();

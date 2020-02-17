@@ -13,7 +13,7 @@ class TemplateController extends Controller
 {
     public function change($template_change)
     {
-        $template_change;
+        // $template_change;
         DB::table('settings')
             ->where('key', 'site.template')
             ->update(['value' => $template_change]);
@@ -26,18 +26,20 @@ class TemplateController extends Controller
 
     public function blocks($template_id)
     {
-        $blocks = Block::where('template_id', $template_id)->get();
-        return view('vendor.template.json', [
-            'blocks' => $blocks
+        // return $template_id;
+        $blocks = Block::where('template_id', $template_id)->orderBy('position', 'asc')->get();
+        $dataType = Voyager::model('DataType')->where('slug', '=', 'blocks')->first();
+        return view('vendor.template.blocks', [
+            'blocks' => $blocks,
+            'dataType' =>  $dataType
         ]);
     }
 
     public function block_update(Request $request, $block_id)
     {
+        // return $request->position;
         $block = Block::where('id', $block_id)->first();
-        
         $mijson = $block->details;
-        
         foreach(json_decode($block->details, true) as $item => $value)
         {
               
@@ -51,6 +53,7 @@ class TemplateController extends Controller
             }
         }
         $block->details = $mijson;
+        $block->position = $request->position;
         $block->save();
         
         return back()->with([

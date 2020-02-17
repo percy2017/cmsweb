@@ -144,6 +144,7 @@ class SettingsTableSeeder extends Seeder
 
 
         // Whatsapp ------------------------------------
+        // --------------------------------------------
         $setting = $this->findSetting('whatsapp.phone');
         if (!$setting->exists) {
             $setting->fill([
@@ -245,44 +246,67 @@ class SettingsTableSeeder extends Seeder
         }
         // Whatsapp ------------------------------------
 
-        // share -------------------
-        //-------------------------
-        // $setting = $this->findSetting('share.facebook');
-        // if (!$setting->exists) {
-        //     $setting->fill([
-        //         'display_name' => 'Facebook',
-        //         'value'        => 'https://www.facebook.com/sharer/sharer.php?u=',
-        //         'details'      => '',
-        //         'type'         => 'text',
-        //         'order'        => 1,
-        //         'group'        => 'Share',
-        //     ])->save();
-        // }
-        
-        // $setting = $this->findSetting('share.facebook');
-        // if (!$setting->exists) {
-        //     $setting->fill([
-        //         'display_name' => 'Twitter',
-        //         'value'        => 'https://twitter.com/home?status=',
-        //         'details'      => '',
-        //         'type'         => 'text',
-        //         'order'        => 2,
-        //         'group'        => 'Share',
-        //     ])->save();
-        // }
-        // $setting = $this->findSetting('share.whatsapp');
-        // if (!$setting->exists) {
-        //     $setting->fill([
-        //         'display_name' => 'Twitter',
-        //         'value'        => 'https://api.whatsapp.com/send?text=',
-        //         'details'      => '',
-        //         'type'         => 'text',
-        //         'order'        => 2,
-        //         'group'        => 'Share',
-        //     ])->save();
-        // }
-        // share -------------------
 
+
+        
+        // mail ------------------------------------
+        // --------------------------------------------
+        $setting = $this->findSetting('mail.username');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Correo',
+                'value'        => 'empresa.loginweb@gmail.com',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 1,
+                'group'        => 'Mail',
+            ])->save();
+        }
+        $setting = $this->findSetting('mail.password');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Contraseña',
+                'value'        => '6yAS7$sMeTt5',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 2,
+                'group'        => 'Mail',
+            ])->save();
+        }
+        $setting = $this->findSetting('mail.driver');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Driver',
+                'value'        => 'smtp',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 3,
+                'group'        => 'Mail',
+            ])->save();
+        }
+        $setting = $this->findSetting('mail.host');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Host',
+                'value'        => 'smtp.googlemail.com',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 4,
+                'group'        => 'Mail',
+            ])->save();
+        }
+        $setting = $this->findSetting('mail.port');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Port',
+                'value'        => '465',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 5,
+                'group'        => 'Mail',
+            ])->save();
+        }
+        // mail ------------------------------------
     }
 
     /**

@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.googlemail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'empresa.loginweb@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'LoginWeb 2020'),
     ],
 
     /*
@@ -71,22 +71,22 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
     |--------------------------------------------------------------------------
-    |
+    |   
     | If your SMTP server requires a username for authentication, you should
     | set it here. This will get used to authenticate with your server on
     | connection. You may also set the "password" value below this one.
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME', 'empresa.loginweb@gmail.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD', '6yAS7$sMeTt5'),
 
     /*
     |--------------------------------------------------------------------------
