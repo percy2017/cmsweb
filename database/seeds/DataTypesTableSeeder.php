@@ -214,6 +214,22 @@ class DataTypesTableSeeder extends Seeder
                 'server_side'           => 0,
             ])->save();
         }
+
+        //BREAD Caja-----------------------------------------
+        //-------------------------------------------------------
+        $dataType = $this->dataType('slug', 'cajas');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'cajas',
+                'display_name_singular' => 'Caja',
+                'display_name_plural'   => 'Cajas',
+                'icon'                  => 'voyager-dollar',
+                'model_name'            => 'App\\Caja',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
     }
 
     /**

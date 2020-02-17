@@ -324,7 +324,39 @@ class MenuItemsTableSeeder extends Seeder
         }
         //streaming------------------------------------------------
 
+        // ------------ Caja -----------------------
+        // -------------------------------------------------
+        $cajaMenuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Caja Chica',
+            'url'     => '',
+        ]);
+        if (!$cajaMenuItem->exists) {
+            $cajaMenuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-dollar',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 3,
+            ])->save();
+        }
 
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Cajas',
+            'url'     => '',
+            'route'   => 'voyager.cajas.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-double-right',
+                'color'      => null,
+                'parent_id'  => $cajaMenuItem->id,
+                'order'      => 1,
+            ])->save();
+        }
+        //Caja------------------------------------------------
 
         // ------------------- Menu Primary ----------------------------------------
         // -------------------------------------------------

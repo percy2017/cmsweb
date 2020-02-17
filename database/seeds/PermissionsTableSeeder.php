@@ -40,5 +40,6 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('messages');
         Permission::generateFor('accounts');
         Permission::generateFor('profiles');
+        Permission::generateFor('cajas');
     }
 }
