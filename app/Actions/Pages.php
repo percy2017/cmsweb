@@ -4,16 +4,16 @@ namespace App\Actions;
 
 use TCG\Voyager\Actions\AbstractAction;
 
-class Blocks extends AbstractAction
+class Pages extends AbstractAction
 {
     public function getTitle()
     {
-        return 'Blocks';
+        return 'Pages';
     }
 
     public function getIcon()
     {
-        return 'voyager-github';
+        return 'voyager-book';
     }
 
     public function getPolicy()
@@ -24,7 +24,7 @@ class Blocks extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-success pull-right',
+            'class' => 'btn btn-sm btn-primary pull-right',
         ];
     }
 

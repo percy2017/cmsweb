@@ -17,7 +17,6 @@ class PermissionsTableSeeder extends Seeder
             'browse_media',
             'browse_compass',
         ];
-
         foreach ($keys as $key) {
             Permission::firstOrCreate([
                 'key'        => $key,
@@ -29,7 +28,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('roles');
         Permission::generateFor('users');
         Permission::generateFor('settings');
-        Permission::generateFor('templates');
+        // Permission::generateFor('templates');
         Permission::generateFor('blocks');
         Permission::generateFor('comments');
         Permission::generateFor('pages');
@@ -41,5 +40,16 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('accounts');
         Permission::generateFor('profiles');
         Permission::generateFor('cajas');
+
+        //Tables
+        $keys = [
+            'browse_templates',
+        ];
+        foreach ($keys as $key) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'table_name' => 'templates',
+            ]);
+        }
     }
 }

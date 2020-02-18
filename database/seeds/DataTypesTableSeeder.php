@@ -68,6 +68,13 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           => 1,
+                'details'               => [
+                    'order_column'          => 'id',
+                    'order_display_column'  => 'name',
+                    'order_direction'       => 'desc',
+                    'default_search_key'    => 'name',
+                    'scope'                 => null
+                ]
             ])->save();
         }
 

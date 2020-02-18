@@ -370,7 +370,7 @@ class DataRowsTableSeeder extends Seeder
                 'type'         => 'number',
                 'display_name' => 'Id',
                 'required'     => 1,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 0,
                 'add'          => 0,

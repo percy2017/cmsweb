@@ -19,10 +19,8 @@
         @include('voyager::alerts')
         <div class="row">
             @foreach ($blocks as $block)
-                <div class="col-md-3">
-                    
-                </div>
-                <div class="col-md-9">
+      
+                <div class="col-md-12">
                     <div class="panel panel-primary panel-bordered">
                         
                         <div class="panel-heading">
@@ -38,7 +36,7 @@
                                 
                                 <h3 class="text-center">{{ $block->description }}</h3>
                                 <div class="col-md-offset-3 col-md-6">
-                                    <input type="number" class="form-control" name="position" value="{{ $block->position }}" />
+                                    <input type="number" min="1" class="form-control" name="position" value="{{ $block->position }}" />
                                 </div>
                                 <div class="col-md-12">
                                     <hr />
@@ -98,9 +96,9 @@
                                             @break
                                     @endswitch
                                 @endforeach
-                                {{--  <div class="form-group col-md-12">
+                                <div class="form-group col-md-12">
                                     <hr />
-                                </div>  --}}
+                                </div>
                                 
                                 <div class="form-group text-center col-md-12">
                                     <button type="submit" class="btn btn-primary">Guardar este Blocke</button>
