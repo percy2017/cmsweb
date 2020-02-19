@@ -2198,7 +2198,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'relationship',
                 'display_name' => 'Relacion Caja',
-                'required'     => 0,
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -2215,6 +2215,21 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => 0,
                 ],
                 'order'        => 10,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AsientoDataType, 'caja_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'Traking User',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 15,
             ])->save();
         }
     }
