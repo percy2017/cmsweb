@@ -237,6 +237,22 @@ class DataTypesTableSeeder extends Seeder
                 'server_side'           => 0,
             ])->save();
         }
+
+          //BREAD Asiento-----------------------------------------
+        //-------------------------------------------------------
+        $dataType = $this->dataType('slug', 'asientos');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'asientos',
+                'display_name_singular' => 'Asiento',
+                'display_name_plural'   => 'Asientos',
+                'icon'                  => 'voyager-polaroid',
+                'model_name'            => 'App\\Asiento',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+            ])->save();
+        }
     }
 
     /**

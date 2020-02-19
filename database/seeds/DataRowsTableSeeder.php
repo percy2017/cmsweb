@@ -24,6 +24,7 @@ class DataRowsTableSeeder extends Seeder
         $AccountDataType = DataType::where('slug', 'accounts')->firstOrFail();
         $ProfileDataType = DataType::where('slug', 'profiles')->firstOrFail();
         $CajaDataType = DataType::where('slug', 'cajas')->firstOrFail();
+        $AsientoDataType = DataType::where('slug','asientos')->firstOrFail();
 
         $dataRow = $this->dataRow($userDataType, 'id');
         if (!$dataRow->exists) {
@@ -2002,6 +2003,26 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 1,
             ])->save();
         }
+        
+        $dataRow = $this->dataRow($CajaDataType, 'title');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre Caja',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
 
         $dataRow = $this->dataRow($CajaDataType, 'importe_inicio');
         if (!$dataRow->exists) {
@@ -2055,6 +2076,123 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 15,
+            ])->save();
+        }
+
+         // FORM Asiento --------------------------------------------------
+        // -----------------------------------------------------------
+        $dataRow = $this->dataRow($AsientoDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 1,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AsientoDataType, 'concepto');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Concepto',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AsientoDataType, 'monto');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Monto',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+        $dataRow = $this->dataRow($AsientoDataType, 'tipo');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Tipo',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                      'options' => [
+                          'ingresos' => 'INGRESOS',
+                          'egresos' => 'EGRESOS'
+                      ]
+                ]
+            ])->save();
+        }
+        
+        $dataRow = $this->dataRow($AsientoDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'tracking_user',
+                'display_name' => 'Traking User',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 15,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AsientoDataType, 'asiento_belongsto_caja_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Relacion Caja',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'model'       => 'App\\Caja',
+                    'table'       => 'cajas',
+                    'type'        => 'belongsTo',
+                    'column'      => 'caja_id',
+                    'key'         => 'id',
+                    'label'       => 'title',
+                    'pivot_table' => 'cajas',
+                    'pivot'       => 0,
+                ],
+                'order'        => 10,
             ])->save();
         }
     }
