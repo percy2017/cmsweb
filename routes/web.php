@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
     //Ecommerce
-    Route::get('/messages/send', 'EcommerceController@details')->name('e_details');
+    Route::get('/products/details/{product_id}', 'EcommerceController@product_details')->name('e_details');
 });
 
 

@@ -19,7 +19,10 @@ class CreateProductDetailsTable extends Migration
             $table->string('images')->nullable();
             $table->double('price')->nullable();
             $table->text('description')->nullable();
-            
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 

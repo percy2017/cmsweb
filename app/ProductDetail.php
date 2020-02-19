@@ -10,4 +10,7 @@ class ProductDetail extends Model
     protected $dates = ['deleted_at'];
 
     protected $table = 'product_details';
+    protected $fillable = [
+        'id', 'title', 'product_id', 'images', 'price', 'description', 'user_id',
+    ];
 }

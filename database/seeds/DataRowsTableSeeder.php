@@ -1000,12 +1000,27 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($productDetailsDataType, 'products_belongsto_role_relationship');
+        $dataRow = $this->dataRow($productDetailsDataType, 'product_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Productos',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 6
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productDetailsDataType, 'products_belongsto_details_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'relationship',
                 'display_name' => 'Productos',
-                'required'     => 0,
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -1015,9 +1030,9 @@ class DataRowsTableSeeder extends Seeder
                     'model'       => 'App\\Product',
                     'table'       => 'products',
                     'type'        => 'belongsTo',
-                    'column'      => 'user_id',
+                    'column'      => 'product_id',
                     'key'         => 'id',
-                    'label'       => 'display_name',
+                    'label'       => 'name',
                     'pivot_table' => 'products',
                     'pivot'       => 0,
                 ],
@@ -1037,6 +1052,21 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 13
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productDetailsDataType, 'user_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'tracking_user',
+                'display_name' => 'Tracking users',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 14,
             ])->save();
         }
 
@@ -1086,6 +1116,11 @@ class DataRowsTableSeeder extends Seeder
         }
         // prodcuts details-------------------------------------------------------------
 
+
+
+
+
+        
 
         // Blocks --------------------------------------------------
         // -----------------------------------------------------------

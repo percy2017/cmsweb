@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class EcommerceController extends Controller
 {
-    function datails()
+
+    function product_details()
     {
         return view('vendor.ecommerce.details');
     }

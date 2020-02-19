@@ -89,21 +89,21 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 4,
             ])->save();
         }        
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Paginas',
-            'url'     => '',
-            'route'   => 'voyager.pages.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-archive',
-                'color'      => null,
-                'parent_id'  => $ConfigMenuItem->id,
-                'order'      => 5,
-            ])->save();
-        } 
+        // $menuItem = MenuItem::firstOrNew([
+        //     'menu_id' => $menu->id,
+        //     'title'   => 'Paginas',
+        //     'url'     => '',
+        //     'route'   => 'voyager.pages.index',
+        // ]);
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill([
+        //         'target'     => '_self',
+        //         'icon_class' => 'voyager-archive',
+        //         'color'      => null,
+        //         'parent_id'  => $ConfigMenuItem->id,
+        //         'order'      => 5,
+        //     ])->save();
+        // } 
 
 
         
