@@ -2063,6 +2063,28 @@ class DataRowsTableSeeder extends Seeder
                 ]
             ])->save();
         }
+
+        $dataRow = $this->dataRow($CajaDataType, 'estado');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Estado',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'options'   => [
+                        "on" => "On Text",
+                        "off" => "Off Text",
+                        "checked" => true
+                    ],
+                ]
+            ])->save();
+        }
         
         $dataRow = $this->dataRow($CajaDataType, 'user_id');
         if (!$dataRow->exists) {

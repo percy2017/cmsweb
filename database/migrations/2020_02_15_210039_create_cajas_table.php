@@ -18,6 +18,7 @@ class CreateCajasTable extends Migration
             $table->string('title');
             $table->decimal('importe_inicio',8,2);
             $table->decimal('saldo',8,2);
+            $table->boolean('estado');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
