@@ -40,7 +40,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('accounts');
         Permission::generateFor('profiles');
         Permission::generateFor('cajas');
-
+        Permission::generateFor('asientos');
         //Tables
         $keys = [
             'browse_templates',

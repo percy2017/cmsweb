@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
-class CreateCajasTable extends Migration
+use App\Asiento;
+class CreateAsientosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateCajasTable extends Migration
      */
     public function up()
     {
-        Schema::create('cajas', function (Blueprint $table) {
+        Schema::create('asientos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->decimal('importe_inicio',8,2);
-            $table->decimal('saldo',8,2);
-            $table->boolean('estado');
+            $table->string('concepto');
+            $table->decimal('monto',8,2);
+            $table->string('tipo');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('caja_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('caja_id')->references('id')->on('cajas');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +34,6 @@ class CreateCajasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cajas');
+        Schema::dropIfExists('asientos');
     }
 }
