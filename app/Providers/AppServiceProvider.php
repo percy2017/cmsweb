@@ -37,6 +37,9 @@ class AppServiceProvider extends ServiceProvider
         Voyager::addAction(\App\Actions\Chats::class);
 
         Voyager::addAction(\App\Actions\Ecommerce\ProductDetails::class);
+
+        //Modulo-streaming
+        Voyager::addAction(\App\Actions\Streaming\viewProfiles::class);
         
     }
 }

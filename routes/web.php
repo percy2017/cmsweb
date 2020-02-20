@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Ecommerce
     Route::get('/products/details/{product_id}', 'EcommerceController@product_details')->name('e_details');
+
+    //streaming
+    Route::get('/accouts/profiles/{id}', 'StreamingController@index')->name('s_perfiles');
 });
 
 
