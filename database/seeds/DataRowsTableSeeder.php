@@ -15,6 +15,7 @@ class DataRowsTableSeeder extends Seeder
         $menuDataType = DataType::where('slug', 'menus')->firstOrFail();
         $roleDataType = DataType::where('slug', 'roles')->firstOrFail();
         $templateDataType = DataType::where('slug', 'templates')->firstOrFail();
+        $productCategorieDataType = DataType::where('slug', 'product_categories')->firstOrFail();
         $productDataType = DataType::where('slug', 'products')->firstOrFail();
         $productDetailsDataType = DataType::where('slug', 'product_details')->firstOrFail();
         $blockDataType = DataType::where('slug', 'blocks')->firstOrFail();
@@ -213,6 +214,7 @@ class DataRowsTableSeeder extends Seeder
         }
 
         // menus ----------------------------------------------
+        //-----------------------------------------------------
         $dataRow = $this->dataRow($menuDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -362,6 +364,11 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 9,
             ])->save();
         }
+
+
+
+
+        
 
         // Template----------------------------------------------------
         // ------------------------------------------------------------
@@ -565,32 +572,6 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        /* $dataRow = $this->dataRow($templateDataType, 'block_belongsto_role_relationship');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'relationship',
-                'display_name' => 'Relacion Block',
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'details'      => [
-                    'model'       => 'App\\Block',
-                    'table'       => 'blocks',
-                    'type'        => 'belongsTo',
-                    'column'      => 'block_id',
-                    'key'         => 'id',
-                    'label'       => 'name',
-                    'pivot_table' => 'blocks',
-                    'pivot'       => 0,
-                    'taggable'    => 0
-                ],
-                'order'        => 10,
-            ])->save();
-        } */
-
         $dataRow = $this->dataRow($templateDataType, 'bussine_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -751,7 +732,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.deleted_at'),
+                'display_name' => 'deleted_at',
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
@@ -761,14 +742,16 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 18,
             ])->save();
         }
+         // Template----------------------------------------------------
+       
+
+
+
+
+
+        // Products Categorias --------------------------------------------------
         // -----------------------------------------------------------
-
-
-
-
-        // Products --------------------------------------------------
-        // -----------------------------------------------------------
-        $dataRow = $this->dataRow($productDataType, 'id');
+        $dataRow = $this->dataRow($productCategorieDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'number',
@@ -783,7 +766,7 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($productDataType, 'name');
+        $dataRow = $this->dataRow($productCategorieDataType, 'name');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'text',
@@ -803,7 +786,7 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($productDataType, 'slug');
+        $dataRow = $this->dataRow($productCategorieDataType, 'slug');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'hidden',
@@ -827,6 +810,202 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($productCategorieDataType, 'image');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => 'Imagen Pincipal',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 5,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productCategorieDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Descripcion',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 2,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productCategorieDataType, 'created_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.created_at'),
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 16,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productCategorieDataType, 'updated_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => __('voyager::seeders.data_rows.updated_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 17,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productCategorieDataType, 'deleted_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'timestamp',
+                'display_name' => 'deletes_at',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 18,
+            ])->save();
+        }
+        // categorias-------------------------------------------------------------
+
+
+        // Products --------------------------------------------------
+        // -----------------------------------------------------------
+        $dataRow = $this->dataRow($productDataType, 'id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Id',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 1,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productDataType, 'categorie_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 3,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productDataType, 'product_belongsto_category_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Categorias',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                    'model'       => 'App\\ProductCategorie',
+                    'table'       => 'product_categories',
+                    'type'        => 'belongsTo',
+                    'column'      => 'categorie_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'product_categories',
+                    'pivot'       => 0,
+                ],
+                'order'        => 2,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productDataType, 'name');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Nombre',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 3,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($productDataType, 'slug');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'hidden',
+                'display_name' => 'Slug',
+                'required'     => 1,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'slugify' => [
+                        'origin' => 'name',
+                        'forceUpdate' => true,
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ],
+                'order'        => 4,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($productDataType, 'image');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -847,6 +1026,58 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($productDataType, 'state_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Estado',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                    'options' => [
+                        'Borrador'  => 'Borrador',
+                        'Publicado' => 'Publicado',
+                        'Archivado' => 'Archivado'
+                    ]
+                ],
+                'order'        => 3,
+            ])->save();
+        }
+
+  
+        // $dataRow = $this->dataRow($productDataType, 'product_belongstomany_products_relationship');
+        // if (!$dataRow->exists) {
+        //     $dataRow->fill([
+        //         'type'         => 'relationship',
+        //         'display_name' => 'Roles',
+        //         'required'     => 0,
+        //         'browse'       => 1,
+        //         'read'         => 1,
+        //         'edit'         => 1,
+        //         'add'          => 1,
+        //         'delete'       => 0,
+        //         'details'      => [
+        //             'model'       => 'App\\Product',
+        //             'table'       => 'products',
+        //             'type'        => 'belongsToMany',
+        //             'column'      => 'id',
+        //             'key'         => 'product_relations',
+        //             'label'       => 'name',
+        //             'pivot_table' => 'products',
+        //             'pivot'       => '1',
+        //             'taggable'    => '0',
+        //         ],
+        //         'order'        => 11,
+        //     ])->save();
+        // }
+
         $dataRow = $this->dataRow($productDataType, 'description_lang');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -866,7 +1097,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'tracking_user',
-                'display_name' => 'Traking User',
+                'display_name' => 'Trakeando usuario',
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 1,
@@ -911,7 +1142,7 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'timestamp',
-                'display_name' => __('voyager::seeders.data_rows.deleted_at'),
+                'display_name' => 'deletes_at',
                 'required'     => 0,
                 'browse'       => 0,
                 'read'         => 0,
@@ -922,6 +1153,10 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
         // prodcuts-------------------------------------------------------------
+
+
+
+
 
 
         // Products Details--------------------------------------------------

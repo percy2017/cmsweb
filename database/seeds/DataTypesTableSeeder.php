@@ -121,6 +121,29 @@ class DataTypesTableSeeder extends Seeder
             ])->save();
         }
 
+        //------ Modulo Ecommerce ---------------
+        //----------------------------------------
+        $dataType = $this->dataType('slug', 'product_categories');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'product_categories',
+                'display_name_singular' => 'Categoria',
+                'display_name_plural'   => 'Categorias',
+                'icon'                  => 'voyager-anchor',
+                'model_name'            => 'App\\ProductCategorie',
+                'generate_permissions'  => 1,
+                'description'           => '',
+                'server_side'           => 0,
+                'details'               => [
+                    'order_column'          => 'id',
+                    'order_display_column'  => 'name',
+                    'order_direction'       => 'desc',
+                    'default_search_key'    => 'name',
+                    'scope'                 => null
+                ]
+            ])->save();
+        }
+
         $dataType = $this->dataType('slug', 'products');
         if (!$dataType->exists) {
             $dataType->fill([
@@ -129,10 +152,16 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_plural'   => 'Productos',
                 'icon'                  => 'voyager-shop',
                 'model_name'            => 'App\\Product',
-                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           => 0,
+                'details'               => [
+                    'order_column'          => 'id',
+                    'order_display_column'  => 'name',
+                    'order_direction'       => 'desc',
+                    'default_search_key'    => 'name',
+                    'scope'                 => null
+                ]
             ])->save();
         }
 
@@ -144,13 +173,23 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_plural'   => 'Producto Detalles',
                 'icon'                  => 'voyager-shop',
                 'model_name'            => 'App\\ProductDetail',
-                // 'controller'            => 'App\\Http\\Controllers\\TemplateController',
                 'generate_permissions'  => 1,
                 'description'           => '',
-                'server_side'           => 0,
+                'server_side'           => 1,
+                'details'               => [
+                    'order_column'          => 'id',
+                    'order_display_column'  => 'title',
+                    'order_direction'       => 'desc',
+                    'default_search_key'    => 'title',
+                    'scope'                 => null
+                ]
             ])->save();
         }
-        
+        //------ Modulo Ecommerce ---------------
+
+
+
+
         $dataType = $this->dataType('slug', 'comments');
         if (!$dataType->exists) {
             $dataType->fill([

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Template;
+use App\Product;
 class ProductTableSeeder extends Seeder
 {
     /**
@@ -11,12 +11,11 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-       // Template::create([
-        //     'role_id' => 1,
-        //     'name' => 'admin',
-        //     'email' => 'admin@admin.com',
-        //     'avatar' => null,
-        //     'password' => Hash::make('password')
-        // ]); 
+        Product::create([
+            'name'          => 'Product Name',
+            'slug'          => 'product-name',
+            'user_id'       => 1,
+            'categorie_id'  => 1
+        ]); 
     }
 }

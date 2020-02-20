@@ -40,13 +40,14 @@ class ProductDetails extends AbstractAction
     public function getDefaultRoute()
     {
         // return route('e_details', $this->data->{$this->data->getKeyName()});
-        $pd = ProductDetail::where('id', $this->data->{$this->data->getKeyName()})->get();
+        // $pd = ProductDetail::where('id', $this->data->{$this->data->getKeyName()})->get();
         // return $pd;
-        if(count($pd) <= 0){
-            return route('voyager.product_details.create');
-        }else{
-            return route('voyager.product_details.edit', $this->data->{$this->data->getKeyName()});
-        }
+        // if(count($pd) <= 0){
+        //     return route('voyager.product_details.create');
+        // }else{
+            return route('e_details', $this->data->{$this->data->getKeyName()});
+            // return route('voyager.product_details.edit', $this->data->{$this->data->getKeyName()});
+        // }
         
         // return route('voyager.product_details.index');
     }   

@@ -18,17 +18,8 @@
             <div class="col-md-12">
                 <div class="panel panel-primary panel-bordered">
                     <div class="panel-body">
-
-                        <div class="form-group col-md-6">
-                            <label>Title :</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        
-                        <div class="form-group col-md-12">
-                            {{ $data }}
-                        </div>
-                        
-                    </div>
+                        {{ $data }}
+                     </div>
                 </div>
             </div>
         </div>

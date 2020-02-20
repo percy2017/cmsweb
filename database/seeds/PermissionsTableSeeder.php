@@ -33,6 +33,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('comments');
         Permission::generateFor('pages');
         Permission::generateFor('excels');
+        Permission::generateFor('product_categories');
         Permission::generateFor('products');
         Permission::generateFor('product_details');
         Permission::generateFor('posts');
@@ -41,6 +42,8 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('profiles');
         Permission::generateFor('cajas');
         Permission::generateFor('asientos');
+
+        
         //Tables
         $keys = [
             'browse_templates',
