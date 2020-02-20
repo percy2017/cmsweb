@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
         //Modulo-streaming
         Voyager::addAction(\App\Actions\Streaming\viewProfiles::class);
+        Voyager::addAction(\App\Actions\Ecommerce\Category::class);
         
     }
 }
