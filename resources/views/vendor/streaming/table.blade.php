@@ -1,3 +1,6 @@
+{{-- <h3>Periles</h3> --}}
+<a href="#" onclick="s_bread('{{ route('s_create') }}', 'create')" class="btn btn-sm btn-primary">Agregar</a>
+<hr />
 <table class="table">
     <thead>
         <tr>

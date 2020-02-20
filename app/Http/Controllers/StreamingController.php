@@ -18,14 +18,10 @@ class StreamingController extends Controller
      */
     public function index($id)
     {
-        //
         $viewProfile = Profile::where('account_id', $id)->get();
-
         return view('vendor.streaming.table', [
             'viewProfile' => $viewProfile
         ]);
-
-        return json_encode($viewProfile);
     }
 
     /**
@@ -35,7 +31,17 @@ class StreamingController extends Controller
      */
     public function create()
     {
-        //
+        $dataType = Voyager::model('DataType')->where('slug', '=', 'profiles')->first();
+
+        $dataRow = DB::table('data_rows')->where([
+            ['data_type_id', '=', $dataType->id],
+            ['field', '=', 'membership']
+        ])->first();
+        $membership = json_decode($dataRow->details, true);
+        
+        return view('vendor.streaming.create', [
+            'membership' => $membership['options']
+        ]);
     }
 
     /**

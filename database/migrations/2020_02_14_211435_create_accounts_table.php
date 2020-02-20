@@ -15,11 +15,11 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->string('name');
-            $table->string('description');
-            $table->string('price');
-            $table->dateTime('renovation');
+            $table->string('description')->nullable();
+            $table->string('price')->nullable();
+            $table->dateTime('renovation')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

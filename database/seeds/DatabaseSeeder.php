@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MessagesTableSeeder::class);
         $this->call(ProductCategoryTableSeeder::class);
         $this->call(ProductTableSeeder::class);
+
+        // Modulo Streaming
+        $this->call(AccountsTableSeeder::class);
     }
 }

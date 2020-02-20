@@ -307,21 +307,21 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => 'Perfiles',
-            'url'     => '',
-            'route'   => 'voyager.profiles.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-double-right',
-                'color'      => null,
-                'parent_id'  => $streamingMenuItem->id,
-                'order'      => 1,
-            ])->save();
-        }
+        // $menuItem = MenuItem::firstOrNew([
+        //     'menu_id' => $menu->id,
+        //     'title'   => 'Perfiles',
+        //     'url'     => '',
+        //     'route'   => 'voyager.profiles.index',
+        // ]);
+        // if (!$menuItem->exists) {
+        //     $menuItem->fill([
+        //         'target'     => '_self',
+        //         'icon_class' => 'voyager-double-right',
+        //         'color'      => null,
+        //         'parent_id'  => $streamingMenuItem->id,
+        //         'order'      => 1,
+        //     ])->save();
+        // }
         //streaming------------------------------------------------
 
         // ------------ Caja -----------------------

@@ -5,8 +5,7 @@
 @section('page_header')
 <div class="container-fluid">
     <h1 class="page-title">
-        hola
-        <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
+            <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
     </h1>
     @can('add', app($dataType->model_name))
     <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
@@ -346,25 +345,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                    aria-label="{{ __('voyager::generic.close') }}"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="voyager-person"></i> Esta cuenta tiene los sgtes perfiles :</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager::generic.close') }}"><span aria-hidden="true">&times;</span></button>
+                Perfiles - 
             </div>
             <div class="modal-body">
-
+                <input type="hidden" id="profile_id" />
                 <div id="profiles_id"></div>
             </div>
-            <div class="modal-footer">
-                {{-- <form action="#" id="delete_form" method="POST">
-                    
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="{{ __('voyager::generic.delete_confirm') }}">
-                </form> --}}
-                <button type="button" class="btn btn-default pull-right"
-                    data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+   
+        </div>
+    </div>
+</div>
 
 @stop
 
@@ -406,66 +397,107 @@
             $('.select_all').on('click', function(e) {
                 $('input[name="row_id"]').prop('checked', $(this).prop('checked')).trigger('change');
             });
-        });
+    });
 
 
-        var deleteFormAction;
-        $('td').on('click', '.delete', function (e) {
-            $('#delete_form')[0].action = '{{ route('voyager.'.$dataType->slug.'.destroy', '__id') }}'.replace('__id', $(this).data('id'));
-            $('#delete_modal').modal('show');
-        });
-        //traer datos de profile
-        var viewFormAction;
-        $('td').on('click', '.profile', function (e) {
-                var urli = '{{ route('s_perfiles', ':id') }}';
-                urli = urli.replace(':id', $(this).data('id'));
-                $.ajax({
-                    url: urli,
-                    success: function (response) {
-                        document.getElementById('profiles_id').innerHTML=response;
-                    }
-                });
-            $('#profile_modal').modal('show');
-        });
-        function s_edit(urli){
-            //alert(urli);
-            $.ajax({
-                    url: urli,
-                    success: function (response) {
-                        document.getElementById('profiles_id').innerHTML=response;
-                    }
-                });
-        }
-        @if($usesSoftDeletes)
-            @php
-                $params = [
-                    's' => $search->value,
-                    'filter' => $search->filter,
-                    'key' => $search->key,
-                    'order_by' => $orderBy,
-                    'sort_order' => $sortOrder,
-                ];
-            @endphp
-            $(function() {
-                $('#show_soft_deletes').change(function() {
-                    if ($(this).prop('checked')) {
-                        $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 1]), true)) }}"></a>');
-                    }else{
-                        $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 0]), true)) }}"></a>');
-                    }
+    var deleteFormAction;
+    $('td').on('click', '.delete', function (e) {
+        $('#delete_form')[0].action = '{{ route('voyager.'.$dataType->slug.'.destroy', '__id') }}'.replace('__id', $(this).data('id'));
+        $('#delete_modal').modal('show');
+    });
 
-                    $('#redir')[0].click();
-                })
-            })
-        @endif
-        $('input[name="row_id"]').on('change', function () {
-            var ids = [];
-            $('input[name="row_id"]').each(function() {
-                if ($(this).is(':checked')) {
-                    ids.push($(this).val());
+
+    @if($usesSoftDeletes)
+        @php
+            $params = [
+                's' => $search->value,
+                'filter' => $search->filter,
+                'key' => $search->key,
+                'order_by' => $orderBy,
+                'sort_order' => $sortOrder,
+            ];
+        @endphp
+        $(function() {
+            $('#show_soft_deletes').change(function() {
+                if ($(this).prop('checked')) {
+                    $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 1]), true)) }}"></a>');
+                }else{
+                    $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 0]), true)) }}"></a>');
                 }
-            });
-            $('.selected_ids').val(ids);
+
+                $('#redir')[0].click();
+            })
+        })
+    @endif
+    $('input[name="row_id"]').on('change', function () {
+        var ids = [];
+        $('input[name="row_id"]').each(function() {
+            if ($(this).is(':checked')) {
+                ids.push($(this).val());
+            }
         });
+        $('.selected_ids').val(ids);
+    });
+
+
+    // --------- -----------------------
+    //traer datos de profile -------------
+
+    $('td').on('click', '.profile', function (e) {
+        s_bread('{{ route('s_perfiles', ':id') }}', 'index');    
+        $('#profile_modal').modal('show');
+    });
+
+    function s_bread(urli, option){
+        switch (option) {
+            case 'index':
+                urli = urli.replace(':id', $(this).data('id'));
+            break;
+            case 'create':
+                urli = urli;
+            break;
+        }
+        $.ajax({
+            url: urli,
+            success: function (response) {
+                document.getElementById('profiles_id').innerHTML=response;
+            }
+        });
+    }
+
+    $("#form_profile").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                alert(data); // show response from the php script.
+            }
+            });
+
+
+    });
+
+    function s_edit(urli){
+        $.ajax({
+            url: urli,
+            success: function (response) {
+                document.getElementById('profiles_id').innerHTML=response;
+            }
+        });
+    }
+    function s_create(urli){
+        $.ajax({
+            url: urli,
+            success: function (response) {
+                document.getElementById('profiles_id').innerHTML=response;
+            }
+        });
+    }
 </script>
 @stop

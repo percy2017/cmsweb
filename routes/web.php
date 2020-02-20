@@ -52,9 +52,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/products/details/{product_id}', 'EcommerceController@product_details')->name('e_details');
 
     //streaming
+    Route::get('/accouts/profiles/create', 'StreamingController@create')->name('s_create');
     Route::get('/accouts/profiles/{id}', 'StreamingController@index')->name('s_perfiles');
     Route::get('/accouts/profiles/{id}/edit', 'StreamingController@edit')->name('s_edit');
-    Route::post('/accouts/profiles/update/', 'StreamingController@update')->name('s_update');
+    Route::post('/accouts/profiles/update', 'StreamingController@update')->name('s_update');
+    Route::post('/accouts/profiles/store', 'StreamingController@store')->name('s_store');
 });
 
 
