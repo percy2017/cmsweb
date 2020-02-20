@@ -12,7 +12,7 @@ class EcommerceController extends Controller
     {
         $dataType = Voyager::model('DataType')->where('slug', '=', 'product_details')->first();
         $data = ProductDetail::where('id', $product_id)->get();
-        // return $data;
+        return $dataType;
         return view('vendor.ecommerce.details', [
             'dataType' => $dataType,
             'data' => $data
