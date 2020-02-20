@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\DB;
 use App\Account;
 use App\Profile;
+
+
 class StreamingController extends Controller
 {
     /**
@@ -16,10 +20,10 @@ class StreamingController extends Controller
     {
         //
         $viewProfile = Profile::where('account_id', $id)->get();
-        
-    //     return view('vendor.voyager.accounts.browse', [
-    //         'viewProfile'=>$viewProfile
-    //     ]);
+
+        return view('vendor.streaming.table', [
+            'viewProfile' => $viewProfile
+        ]);
 
         return json_encode($viewProfile);
     }
@@ -65,6 +69,19 @@ class StreamingController extends Controller
     public function edit($id)
     {
         //
+        $dataType = Voyager::model('DataType')->where('slug', '=', 'profiles')->first();
+        
+        $dataRow = DB::table('data_rows')->where([
+            ['data_type_id', '=', $dataType->id],
+            ['field', '=', 'statu']
+        ])->first();
+//return $dataRow->details;
+        $profile = Profile::where('id', $id)->first();
+        return view('vendor.streaming.edit', [
+            'profile' => $profile,
+            'datatype' => $dataType,
+            'dataRow'=>$dataRow,
+        ]);
     }
 
     /**
@@ -77,6 +94,7 @@ class StreamingController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return $id;
     }
 
     /**
