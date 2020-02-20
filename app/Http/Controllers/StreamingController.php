@@ -17,9 +17,11 @@ class StreamingController extends Controller
         //
         $viewProfile = Profile::where('account_id', $id)->get();
         
-        return view('vendor.voyager.accounts.browse', [
-            'viewProfile'=>$viewProfile
-        ]);
+    //     return view('vendor.voyager.accounts.browse', [
+    //         'viewProfile'=>$viewProfile
+    //     ]);
+
+        return json_encode($viewProfile);
     }
 
     /**

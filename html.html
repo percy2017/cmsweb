@@ -25,6 +25,16 @@
         id: 'mapbox.streets'
     }).addTo(mymap);
     var marker = L.marker([-14.835, -64.902]).addTo(mymap);
+
+    $.ajax({
+        type: "method",
+        url: "url",
+        data: "data",
+        dataType: "dataType",
+        success: function (response) {
+            
+        }
+    });
     </script>
 </body>
 </html>
