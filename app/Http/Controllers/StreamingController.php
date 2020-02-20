@@ -7,7 +7,9 @@ use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\DB;
 use App\Account;
 use App\Profile;
-
+use Illuminate\Support\Facades\Validator;
+use Response;
+use Carbon\Carbon;
 
 class StreamingController extends Controller
 {
@@ -52,7 +54,15 @@ class StreamingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Profile::create([
+            'fullname'   => $request->fullname,
+            'phone'      => $request->phone,
+            'membership' => $request->membership,
+            'statu'      => 'Vigente',
+            'startdate'  => Carbon::now(),
+            'account_id' => 1
+        ]);
+        return Response::json(['success' => '1']);
     }
 
     /**

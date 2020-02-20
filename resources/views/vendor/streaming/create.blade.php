@@ -1,4 +1,4 @@
-<h3 class="text-center">Nuevo Perfil</h3>
+
 <form id="form_profile" method="POST">
     @csrf
     <div class="form-group">
@@ -20,6 +20,6 @@
     </div>
   
     <hr />
-    <button class="btn btn-primary" type="submit">Agregar</button>
-    <a href="#" onclick="s_bread('{{ route('s_perfiles', ':id') }}', 'index')" class="btn btn-danger">Cancelar</a>
+    
+    <button type="button" id="submitForm" class="btn btn-primary btn-prime white btn-flat">Register</button>
 </form>

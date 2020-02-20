@@ -372,31 +372,31 @@
 @endif
 <script>
     $(document).ready(function () {
-            @if (!$dataType->server_side)
-                var table = $('#dataTable').DataTable({!! json_encode(
-                    array_merge([
-                        "order" => $orderColumn,
-                        "language" => __('voyager::datatable'),
-                        "columnDefs" => [['targets' => -1, 'searchable' =>  false, 'orderable' => false]],
-                    ],
-                    config('voyager.dashboard.data_tables', []))
-                , true) !!});
-            @else
-                $('#search-input select').select2({
-                    minimumResultsForSearch: Infinity
-                });
-            @endif
-
-            @if ($isModelTranslatable)
-                $('.side-body').multilingual();
-                //Reinitialise the multilingual features when they change tab
-                $('#dataTable').on('draw.dt', function(){
-                    $('.side-body').data('multilingual').init();
-                })
-            @endif
-            $('.select_all').on('click', function(e) {
-                $('input[name="row_id"]').prop('checked', $(this).prop('checked')).trigger('change');
+        @if (!$dataType->server_side)
+            var table = $('#dataTable').DataTable({!! json_encode(
+                array_merge([
+                    "order" => $orderColumn,
+                    "language" => __('voyager::datatable'),
+                    "columnDefs" => [['targets' => -1, 'searchable' =>  false, 'orderable' => false]],
+                ],
+                config('voyager.dashboard.data_tables', []))
+            , true) !!});
+        @else
+            $('#search-input select').select2({
+                minimumResultsForSearch: Infinity
             });
+        @endif
+
+        @if ($isModelTranslatable)
+            $('.side-body').multilingual();
+            //Reinitialise the multilingual features when they change tab
+            $('#dataTable').on('draw.dt', function(){
+                $('.side-body').data('multilingual').init();
+            })
+        @endif
+        $('.select_all').on('click', function(e) {
+            $('input[name="row_id"]').prop('checked', $(this).prop('checked')).trigger('change');
+        });
     });
 
 
@@ -465,39 +465,19 @@
         });
     }
 
-    $("#form_profile").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-        var form = $(this);
-        var url = form.attr('action');
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: form.serialize(), // serializes the form's elements.
-            success: function(data)
-            {
-                alert(data); // show response from the php script.
+     $('body').on('click', '#submitForm', function(){
+        var registerForm = $("#form_profile");
+        var formData = registerForm.serialize();
+        console.log(formData);
+         $.ajax({
+            type: 'POST',
+            url: '{{ route('s_store') }}',
+            data: formData,
+            success: function (response) {
+                document.getElementById('profiles_id').innerHTML=response;
             }
-            });
-
-
+        });
     });
 
-    function s_edit(urli){
-        $.ajax({
-            url: urli,
-            success: function (response) {
-                document.getElementById('profiles_id').innerHTML=response;
-            }
-        });
-    }
-    function s_create(urli){
-        $.ajax({
-            url: urli,
-            success: function (response) {
-                document.getElementById('profiles_id').innerHTML=response;
-            }
-        });
-    }
 </script>
 @stop
