@@ -8,7 +8,7 @@ class AddSeat extends AbstractAction
 {
     public function getTitle()
     {
-        return 'Agregar Asiento';
+        return 'VerAsiento';
     }
 
     public function getIcon()
@@ -30,8 +30,7 @@ class AddSeat extends AbstractAction
 
     public function getDefaultRoute()
     {
-        return route('voyager.asientos.index');
-    //   return route('voyager.'.$this->dataType->slug.'.show', $this->data->{$this->data->getKeyName()});
+        return route('showcaja', $this->data->{$this->data->getKeyName()});
     }
 
     public function shouldActionDisplayOnDataType()
