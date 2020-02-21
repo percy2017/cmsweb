@@ -1952,7 +1952,27 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 6,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AccountDataType, 'quantity_profiles');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Cantidad de Perfiles',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 7,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2021,6 +2041,12 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+
+
+
+
+
+
         // FORM Profiles --------------------------------------------------
         // -----------------------------------------------------------
         $dataRow = $this->dataRow($ProfileDataType, 'id');
@@ -2049,7 +2075,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 3,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2069,7 +2095,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 7,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2089,7 +2115,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 6,
                 'details'      => [
                     'options'=>[
                         'Vigente'=>'Vigente',
@@ -2113,7 +2139,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 4,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2133,7 +2159,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 4,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2147,13 +2173,13 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'text_area',
                 'display_name' => 'Observacion',
-                'required'     => 1,
+                'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 8,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2173,7 +2199,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 10,
                 'details'      => [
                     'options'=>[
                         'Mensual'=>'Mensual',
@@ -2198,6 +2224,9 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
                     'model'       => 'App\\Account',
                     'table'       => 'accounts',
                     'type'        => 'belongsTo',

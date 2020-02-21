@@ -20,6 +20,7 @@ class CreateAccountsTable extends Migration
             $table->string('description')->nullable();
             $table->string('price')->nullable();
             $table->dateTime('renovation')->nullable();
+            $table->bigInteger('quantity_profiles')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

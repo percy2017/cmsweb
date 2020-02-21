@@ -20,16 +20,12 @@
             <td>{{ $item->fullname }} </td>
             <td>{{ $item->statu }}</td>
             <td>{{ $item->membership }}</td>
+            <td>{{ \Carbon\Carbon::now()->diffForHumans($item->finaldate) }}</td>
+            {{-- <td>{{ Carbon::now()->$item->finaldate->diffForHumans() }}</td> --}}
             <td>
-            {{-- {{ \Carbon\Carbon::parse(date('Y-m-d',strtotime($item->finaldate)))->diffForHumans(\Carbon\Caborn::now()) }} --}}
-            {{ \Carbon\Carbon::now()->addMonth() }}  
-            <br>
-            {{ $item->finaldate }}  
-        </td>
-            <td>
-            <a href="#" onclick="s_bread('{{ route('s_edit', $item->id) }}', 'edit')" class="btn btn-warning">
-                    <i class="voyager-pen"></i>
-            </a>
+                <a href="#" onclick="s_bread('{{ route('s_edit', $item->id) }}', 'edit')" class="btn btn-warning">
+                        <i class="voyager-pen"></i>
+                </a>
             </td>
         </tr>
         @endforeach
