@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/accouts/profiles/store', 'StreamingController@store')->name('s_store');
     Route::get('/accouts/profiles/{id}', 'StreamingController@index')->name('s_perfiles');
     Route::get('/accouts/profiles/{id}/edit', 'StreamingController@edit')->name('s_edit');
-    Route::post('/accouts/profiles/update', 'StreamingController@update')->name('s_update');
+    Route::post('/accouts/profiles/{id}/update', 'StreamingController@update')->name('s_update');
     
 });
 

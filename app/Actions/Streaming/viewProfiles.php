@@ -26,6 +26,7 @@ class viewProfiles extends AbstractAction
     {
         return [
             'class'   => 'btn btn-sm btn-success pull-right profile',
+            'style'=>'margin: 5px',
             'data-id' => $this->data->{$this->data->getKeyName()},
             'id'      => 'profile-'.$this->data->{$this->data->getKeyName()},
             
@@ -39,8 +40,8 @@ class viewProfiles extends AbstractAction
         return 'javascript:;';
     }
     //en que view se mostrará nuestra accion
-   /*  public function shouldActionDisplayOnDataType()
+    public function shouldActionDisplayOnDataType()
     {
     return $this->dataType->slug == 'accounts';
-    } */
+    }
 }

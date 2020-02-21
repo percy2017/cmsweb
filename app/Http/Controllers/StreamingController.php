@@ -21,6 +21,7 @@ class StreamingController extends Controller
     public function index($id)
     {
         $viewProfile = Profile::where('account_id', $id)->get();
+     
         return view('vendor.streaming.table', [
             'viewProfile' => $viewProfile
         ]);
@@ -54,7 +55,7 @@ class StreamingController extends Controller
      */
     public function store(Request $request)
     {
-        Profile::create([
+       $profile = Profile::create([
             'fullname'   => $request->fullname,
             'phone'      => $request->phone,
             'membership' => $request->membership,
@@ -62,7 +63,9 @@ class StreamingController extends Controller
             'startdate'  => Carbon::now(),
             'account_id' => 1
         ]);
-        return Response::json(['success' => '1']);
+        return response()->json([
+            'profile'=> $profile
+        ]);
     }
 
     /**
@@ -91,12 +94,20 @@ class StreamingController extends Controller
             ['data_type_id', '=', $dataType->id],
             ['field', '=', 'statu']
         ])->first();
-//return $dataRow->details;
+        $statu = json_decode($dataRow->details, true);
+        //membreship
+        $dataRow2 = DB::table('data_rows')->where([
+            ['data_type_id', '=', $dataType->id],
+            ['field', '=', 'membership']
+        ])->first();
+        $membership = json_decode($dataRow2->details, true);
+
         $profile = Profile::where('id', $id)->first();
         return view('vendor.streaming.edit', [
-            'profile' => $profile,
-            'datatype' => $dataType,
-            'dataRow'=>$dataRow,
+            'profile'   => $profile,
+            'datatype'  => $dataType,
+            'statu'     => $statu['options'],
+            'membership'=> $membership['options'],
         ]);
     }
 
@@ -109,8 +120,16 @@ class StreamingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        return $id;
+        
+        $profile = Profile::where('id', $id)->first();
+        /* return $profile; */
+        $profile->membership = $request->membership;
+        $profile->statu = $request->statu;
+        $profile->finaldate = $request->finaldate;
+        $profile->save();
+        return response()->json([
+            'profile'=> $profile
+        ]);
     }
 
     /**

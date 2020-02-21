@@ -9,6 +9,6 @@ class Profile extends Model
     //
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-
+    protected $fillable = ['fullname','phone','statu','finaldate','startdate','membership','observation','account_id'];
     protected $table = 'profiles';
 }

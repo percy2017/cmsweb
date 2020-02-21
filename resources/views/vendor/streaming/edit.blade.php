@@ -1,22 +1,37 @@
-<form action="{{ route('s_update') }}" method="POST">
+<form   id="form_profileEdit" method="POST">
     @csrf
+    <input type="hidden" value="{{ $profile->id }}" id="editForm">
+    <div class="form-group">
+        <label for="">Membresia</label>
+        <select class="form-control" name="membership" id="">
+            @foreach ($membership as $item )
+                @if ( $profile->membership == $item)
+                    <option selected value="{{ $item }}">{{ $item }}</option>
+                @else
+                    <option value="{{ $item }}">{{ $item }}</option>
+                @endif
+            @endforeach
+        </select>
+    </div>
     <div class="form-group">
         <label for="">Estado</label>
-        <input value="{{$profile->statu}}" type="text" class="form-control">
+        <select class="form-control" name="statu" id="">
+            @foreach ($statu as $item )
+                @if ( $profile->statu == $item)
+                     <option selected value="{{ $item }}">{{ $item }}</option>
+                @else
+                    <option value="{{ $item }}">{{ $item }}</option>
+                @endif
+            @endforeach
+        </select>
     </div>
     <div class="form-group">
-        <label for="">Fecha de renovacion</label>
-        <select name="status" id="">
-            <option value=""></option>
-        </select>
-      {{--   {{ $dataRow->details['options'] }} --}}
-     {{--  corregir aqui --}}
-        @foreach ($dataRow->details as $item => $value)
-            {{ $value['options'] }}
-        @endforeach
-     {{--  corregir aqui --}}
-        <input value="{{$profile->finaldate}}" type="text" class="form-control">
+        <label for="">Facturacion</label>
+        <input name="finaldate" value="{{$profile->finaldate}}" type="text" class="form-control">
     </div>
-    <button class="btn btn-primary" type="submit">actulizar</button>
+    <button type="button" id="submitFormEdit" class="btn btn-primary btn-prime white btn-flat">Actulizar</button>
+    <a onclick="s_bread('{{ route('s_perfiles', ':id') }}', 'index')"
+        class="btn btn-default btn-prime white btn-flat">Cancelar
+    </a>
 
 </form>

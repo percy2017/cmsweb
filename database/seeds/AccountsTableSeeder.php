@@ -13,17 +13,18 @@ class AccountsTableSeeder extends Seeder
      */
     public function run()
     {
-        Account::create([
+        /* Account::create([
             'name'    => 'Cuenta de Prueba',
             'user_id' => 1
-        ]);
+        ]); */
 
-        // Profile::create([
-        //     'fullname'   => 'luis flores',
-        //     'phone'      => '7000001',
-        //     'membership' => 'Mensual',
-        //     'statu'      => 'Vigente',
-        //     'startdate'  => Carbon::now()
-        // ]);
+        Profile::create([
+             'fullname'   => 'luis flores',
+             'phone'      => '7000001',
+             'membership' => 'Mensual',
+             'statu'      => 'Vigente',
+             'startdate'  => Carbon::now(),
+             'account_id' => 1
+         ]);
     }
 }

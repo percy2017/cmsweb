@@ -6,23 +6,30 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre Completo</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Fecha de Inicio</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Membresia</th>
+            <th scope="col">Tiempo Res</th>
             <th scope="col">acciones</th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach ($viewProfile as $item)
+        @foreach($viewProfile as $item)
         <tr>
             <th scope="row">{{ $item->id}}</th>
             <td>{{ $item->fullname }} </td>
-            <td>{{ $item->phone }}</td>
-            <td>{{ $item->startdate }} </td>
+            <td>{{ $item->statu }}</td>
+            <td>{{ $item->membership }}</td>
             <td>
-            <a href="#" onclick="s_edit('{{ route('s_edit', $item->id) }}')" class="btn btn-warning">
+            {{-- {{ \Carbon\Carbon::parse(date('Y-m-d',strtotime($item->finaldate)))->diffForHumans(\Carbon\Caborn::now()) }} --}}
+            {{ \Carbon\Carbon::now()->addMonth() }}  
+            <br>
+            {{ $item->finaldate }}  
+        </td>
+            <td>
+            <a href="#" onclick="s_bread('{{ route('s_edit', $item->id) }}', 'edit')" class="btn btn-warning">
                     <i class="voyager-pen"></i>
-                </a>
+            </a>
             </td>
         </tr>
         @endforeach

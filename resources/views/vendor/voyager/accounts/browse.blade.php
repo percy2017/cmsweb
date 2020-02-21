@@ -5,7 +5,7 @@
 @section('page_header')
 <div class="container-fluid">
     <h1 class="page-title">
-            <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
+        <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
     </h1>
     @can('add', app($dataType->model_name))
     <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
@@ -345,14 +345,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager::generic.close') }}"><span aria-hidden="true">&times;</span></button>
-                Perfiles - 
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="{{ __('voyager::generic.close') }}"><span aria-hidden="true">&times;</span></button>
+                Perfiles -
             </div>
             <div class="modal-body">
                 <input type="hidden" id="profile_id" />
                 <div id="profiles_id"></div>
             </div>
-   
+
         </div>
     </div>
 </div>
@@ -444,16 +445,24 @@
     //traer datos de profile -------------
 
     $('td').on('click', '.profile', function (e) {
-        s_bread('{{ route('s_perfiles', ':id') }}', 'index');    
+        document.getElementById('profile_id').value = $(this).data('id'); 
+        s_bread('{{ route('s_perfiles', ':id') }}', 'index');
+          
         $('#profile_modal').modal('show');
     });
 
     function s_bread(urli, option){
+       /*  var id = document.getElementById('profile_id').value(); */
         switch (option) {
             case 'index':
-                urli = urli.replace(':id', $(this).data('id'));
+
+                urli = urli.replace(':id', $('#profile_id').val());
+                
             break;
             case 'create':
+                urli = urli;
+            break;
+            case 'edit':
                 urli = urli;
             break;
         }
@@ -464,7 +473,7 @@
             }
         });
     }
-
+    /** Codifo para guardar STORE*/
      $('body').on('click', '#submitForm', function(){
         var registerForm = $("#form_profile");
         var formData = registerForm.serialize();
@@ -474,7 +483,25 @@
             url: '{{ route('s_store') }}',
             data: formData,
             success: function (response) {
-                document.getElementById('profiles_id').innerHTML=response;
+                s_bread('{{ route('s_perfiles', ':id') }}', 'index');    
+                /* document.getElementById('profiles_id').innerHTML=JSON.stringify(response); */
+            }
+        });
+    });
+    /** Codifo para Actulizar */
+    $('body').on('click', '#submitFormEdit', function(){
+        var registerForm = $("#form_profileEdit");
+        var formData = registerForm.serialize();
+        var urli ="{{ route('s_update', ':id') }}";
+        urli = urli.replace(':id', $('#editForm').val());
+        
+         $.ajax({
+            type: 'POST',
+            url: urli,
+            data: formData,
+            success: function (response) {
+                s_bread('{{ route('s_perfiles', ':id') }}', 'index');    
+                /* document.getElementById('profiles_id').innerHTML=JSON.stringify(response); */
             }
         });
     });

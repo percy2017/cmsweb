@@ -24,7 +24,7 @@ class Accounts extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class'   => 'btn btn-sm btn-warning'
+            'class'   => 'btn btn-md btn-warning'
         ];
     }
     
