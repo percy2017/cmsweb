@@ -42,6 +42,9 @@ class AppServiceProvider extends ServiceProvider
         //Modulo-streaming
         Voyager::addAction(\App\Actions\Streaming\viewProfiles::class);
         Voyager::addAction(\App\Actions\Streaming\Accounts::class);
+
+        //Modulo Caja
+        Voyager::addAction(\App\Actions\Caja\AddSeat::class);
         
     }
 }
