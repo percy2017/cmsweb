@@ -1867,13 +1867,11 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 0,
                 'order'        => 2,
                 'details'      => [
-
                     'options' => [
                         'Netflix' => 'Netflix',
                         'Spotify' => 'Spotify',
                         'Disney_Plus' => 'Disney Plus'
                     ],
-
                     'display'   => [
                         'width'  => '6',
                     ],
@@ -1896,7 +1894,7 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
-                    ],
+                    ]
                 ]
             ])->save();
         }
@@ -1916,7 +1914,7 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
-                    ],
+                    ]
                 ]
             ])->save();
         }
@@ -1936,7 +1934,7 @@ class DataRowsTableSeeder extends Seeder
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
-                    ],
+                    ]
                 ]
             ])->save();
         }
@@ -1992,10 +1990,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 8,
-                'details'      => [
-                    
-                ]
+                'order'        => 8
             ])->save();
         }
 
@@ -2222,10 +2217,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 9,
-                'display'      => [
-                    
-                ],
+                'order'        => 9
             ])->save();
         }
 
