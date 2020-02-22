@@ -307,6 +307,34 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
         // mail ------------------------------------
+
+
+         // streaming ------------------------------------
+        // -----------------------------------------------
+        $setting = $this->findSetting('streaming.mensaje1');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Mensaje 1',
+                'value'        => 'le mandamos este mensaje para informarle que su membresia del servcio',
+                'details'      => '',
+                'type'         => 'text_area',
+                'order'        => 1,
+                'group'        => 'Streaming',
+            ])->save();
+        }
+
+        $setting = $this->findSetting('streaming.mensaje2');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Mensaje 2',
+                'value'        => 'ya finalizo, le invitamos a renovar con nuestra promo :',
+                'details'      => '',
+                'type'         => 'text_area',
+                'order'        => 2,
+                'group'        => 'Streaming',
+            ])->save();
+        }
+
     }
 
     /**

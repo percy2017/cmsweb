@@ -21,7 +21,7 @@ class StreamingController extends Controller
     public function index($id)
     {
         $viewProfile = Profile::where('account_id', $id)->get();
-     
+
         return view('vendor.streaming.table', [
             'viewProfile' => $viewProfile
         ]);
@@ -41,7 +41,7 @@ class StreamingController extends Controller
             ['field', '=', 'membership']
         ])->first();
         $membership = json_decode($dataRow->details, true);
-        
+
         return view('vendor.streaming.create', [
             'membership' => $membership['options']
         ]);
@@ -55,7 +55,7 @@ class StreamingController extends Controller
      */
     public function store(Request $request)
     {
-       $profile = Profile::create([
+        $profile = Profile::create([
             'fullname'   => $request->fullname,
             'phone'      => $request->phone,
             'membership' => $request->membership,
@@ -64,7 +64,7 @@ class StreamingController extends Controller
             'account_id' => 1
         ]);
         return response()->json([
-            'profile'=> $profile
+            'profile' => $profile
         ]);
     }
 
@@ -87,9 +87,9 @@ class StreamingController extends Controller
      */
     public function edit($id)
     {
-        //
+       
         $dataType = Voyager::model('DataType')->where('slug', '=', 'profiles')->first();
-        
+         //status
         $dataRow = DB::table('data_rows')->where([
             ['data_type_id', '=', $dataType->id],
             ['field', '=', 'statu']
@@ -107,7 +107,7 @@ class StreamingController extends Controller
             'profile'   => $profile,
             'datatype'  => $dataType,
             'statu'     => $statu['options'],
-            'membership'=> $membership['options'],
+            'membership' => $membership['options'],
         ]);
     }
 
@@ -120,15 +120,14 @@ class StreamingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $profile = Profile::where('id', $id)->first();
-        /* return $profile; */
         $profile->membership = $request->membership;
         $profile->statu = $request->statu;
         $profile->finaldate = $request->finaldate;
         $profile->save();
         return response()->json([
-            'profile'=> $profile
+            'profile' => $profile
         ]);
     }
 

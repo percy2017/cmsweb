@@ -13,7 +13,7 @@ class Accounts extends AbstractAction
 
     public function getIcon()
     {
-        return 'voyager-group';
+        return 'fa fa-users';
     }
 
     public function getPolicy()

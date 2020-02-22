@@ -11,4 +11,12 @@ class Profile extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['fullname','phone','statu','finaldate','startdate','membership','observation','account_id'];
     protected $table = 'profiles';
+
+    public function account() {
+
+        return $this->belongsTo('App\Account');
+
+    }
+
+
 }

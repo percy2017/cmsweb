@@ -1892,7 +1892,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 3,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -1901,18 +1901,38 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($AccountDataType, 'description');
+        $dataRow = $this->dataRow($AccountDataType, 'email');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text_area',
-                'display_name' => 'Descripcion',
-                'required'     => 0,
-                'browse'       => 0,
+                'type'         => 'text',
+                'display_name' => 'Correo electronico',
+                'required'     => 1,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 4,
+                'details'      => [
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AccountDataType, 'password');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Contraseña',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 5,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -1932,7 +1952,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 6,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -1952,11 +1972,29 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 7,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
                     ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($AccountDataType, 'description');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text_area',
+                'display_name' => 'Descripcion',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 8,
+                'details'      => [
+                    
                 ]
             ])->save();
         }
@@ -2049,7 +2087,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 3,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2069,7 +2107,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 4,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2082,18 +2120,42 @@ class DataRowsTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'select_dropdown',
-                'display_name' => 'statu',
+                'display_name' => 'Estado',
                 'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 5,
                 'details'      => [
                     'options'=>[
                         'Vigente'=>'Vigente',
                         'Finalizado'=>'Finalizado'
+                    ],
+                    'display'   => [
+                        'width'  => '6',
+                    ],
+                ]
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($ProfileDataType, 'membership');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'Membresia',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 0,
+                'order'        => 6,
+                'details'      => [
+                    'options'=>[
+                        'Mensual'=>'Mensual',
+                        'Trimestral'=>'Trimestral'
                     ],
                     'display'   => [
                         'width'  => '6',
@@ -2113,7 +2175,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 7,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2133,7 +2195,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
+                'order'        => 8,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2153,36 +2215,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 2,
-                'details'      => [
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($ProfileDataType, 'membership');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'select_dropdown',
-                'display_name' => 'Membresia',
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 0,
-                'order'        => 2,
-                'details'      => [
-                    'options'=>[
-                        'Mensual'=>'Mensual',
-                        'Trimestral'=>'Trimestral'
-                    ],
-                    'display'   => [
-                        'width'  => '6',
-                    ],
-                ]
+                'order'        => 9,
+                'details'      => ''
             ])->save();
         }
 

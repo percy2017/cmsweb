@@ -342,16 +342,17 @@
 </div><!-- /.modal -->
 
 <div class="modal modal-success fade" tabindex="-1" id="profile_modal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"
-                    aria-label="{{ __('voyager::generic.close') }}"><span aria-hidden="true">&times;</span></button>
-                Perfiles -
+                    aria-label="{{ __('avoyager::generic.close') }}"><span aria-hidden="true">&times;</span></button>
+                    @php $account= App\Account::first();  @endphp
+                    Perfiles - {{ $account->type }} - {{ $account->name }}
             </div>
             <div class="modal-body">
                 <input type="hidden" id="profile_id" />
-                <div id="profiles_id"></div>
+                <div class="table-responsive" id="profiles_id"></div>
             </div>
 
         </div>

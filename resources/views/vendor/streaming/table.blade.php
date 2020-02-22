@@ -1,7 +1,10 @@
 {{-- <h3>Periles</h3> --}}
-<a href="#" onclick="s_bread('{{ route('s_create') }}', 'create')" class="btn btn-sm btn-primary">Agregar</a>
+<a href="#" onclick="s_bread('{{ route('s_create') }}', 'create')" class="btn btn-sm btn-primary">
+   Agregar
+</a>
 <hr />
-<table class="table">
+<table class="table table-bordered">
+    <caption>List of users</caption>
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -21,15 +24,21 @@
             <td>{{ $item->statu }}</td>
             <td>{{ $item->membership }}</td>
             <td>
-            {{-- {{ \Carbon\Carbon::parse(date('Y-m-d',strtotime($item->finaldate)))->diffForHumans(\Carbon\Caborn::now()) }} --}}
-            {{ \Carbon\Carbon::now()->addMonth() }}  
-            <br>
-            {{ $item->finaldate }}  
-        </td>
-            <td>
-            <a href="#" onclick="s_bread('{{ route('s_edit', $item->id) }}', 'edit')" class="btn btn-warning">
+              {{--  @php
+                   $fechaEmision = Carbon::parse($item->startdate);
+                    $fechaExpiracion = Carbon::parse($item->finaldate);
+
+                    $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+               @endphp --}}
+                {{ $item->finaldate}}  
+             </td>
+            <td>    
+                <a href="#" onclick="s_bread('{{ route('s_edit', $item->id) }}', 'edit')" class="btn btn-warning">
                     <i class="voyager-pen"></i>
-            </a>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=591{{$item->phone}}&text=Hola%2C*{{$item->fullname}}* {{ setting('streaming.mensaje1') }} *{{ $item->account->type }}* {{ setting('streaming.mensaje2') }}"  target="_blank" onclick="" class="btn btn-success">
+                    <i class="fa fa-whatsapp"></i>
+                </a>
             </td>
         </tr>
         @endforeach

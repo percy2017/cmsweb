@@ -13,10 +13,11 @@ class AccountsTableSeeder extends Seeder
      */
     public function run()
     {
-        /* Account::create([
+        Account::create([
             'name'    => 'Cuenta de Prueba',
+            'type'    => 'Netflix',
             'user_id' => 1
-        ]); */
+        ]);
 
         Profile::create([
              'fullname'   => 'luis flores',
