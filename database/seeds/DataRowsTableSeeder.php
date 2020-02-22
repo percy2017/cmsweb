@@ -2059,6 +2059,12 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+
+
+
+
+
+
         // FORM Profiles --------------------------------------------------
         // -----------------------------------------------------------
         $dataRow = $this->dataRow($ProfileDataType, 'id');
@@ -2108,6 +2114,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 4,
+                'order'        => 7,
                 'details'      => [
                     'display'   => [
                         'width'  => '6',
@@ -2127,7 +2134,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 5,
+                'order'        => 6,
                 'details'      => [
                     'options'=>[
                         'Vigente'=>'Vigente',
@@ -2216,7 +2223,9 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'order'        => 9,
-                'details'      => ''
+                'display'      => [
+                    
+                ],
             ])->save();
         }
 
@@ -2232,6 +2241,9 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 0,
                 'details'      => [
+                    'display' => [
+                        'width' => 6
+                    ],
                     'model'       => 'App\\Account',
                     'table'       => 'accounts',
                     'type'        => 'belongsTo',

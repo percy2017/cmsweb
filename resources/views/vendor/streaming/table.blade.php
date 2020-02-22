@@ -23,15 +23,8 @@
             <td>{{ $item->fullname }} </td>
             <td>{{ $item->statu }}</td>
             <td>{{ $item->membership }}</td>
-            <td>
-              {{--  @php
-                   $fechaEmision = Carbon::parse($item->startdate);
-                    $fechaExpiracion = Carbon::parse($item->finaldate);
-
-                    $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
-               @endphp --}}
-                {{ $item->finaldate}}  
-             </td>
+            <td>{{ \Carbon\Carbon::now()->diffForHumans($item->finaldate) }}</td>
+            {{-- <td>{{ Carbon::now()->$item->finaldate->diffForHumans() }}</td> --}}
             <td>    
                 <a href="#" onclick="s_bread('{{ route('s_edit', $item->id) }}', 'edit')" class="btn btn-warning">
                     <i class="voyager-pen"></i>
