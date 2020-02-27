@@ -6,22 +6,41 @@
 
           <div class="modal-header">
             <slot name="header">
-              default header
+              Registrar nuevo movimiento
             </slot>
           </div>
 
           <div class="modal-body">
             <slot name="body">
-              default body
+              <div class="form-group">
+                <label for="tipo">Tipo de Movimiento</label>
+                <select v-model="tipo" class="form-control">
+                  <option value="" selected>Seleccione</option>
+                  <option value="INGRESO" selected>INGRESO</option>
+                  <option value="EGRESO" selected>EGRESO</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="concepto">Concepto</label>
+                <input type="text" v-model="concepto" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="monto">Monto</label>
+                <input type="text" v-model="monto" class="form-control">
+              </div>
             </slot>
           </div>
 
           <div class="modal-footer">
             <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
+              <div class="col-md-6">
+                <button class="btn btn-primary" @click="save">Registrar</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-danger" @click="$emit('close')">
+                Cancelar
               </button>
+              </div>
             </slot>
           </div>
         </div>
@@ -30,11 +49,43 @@
   </transition>
 </template>
 <script>
+import webServices from '../webServices'
 export default {
+    name: 'movimientos',
+     props:['caja'],
+    data() {
+      return {
+        errors: [],
+        concepto: '',
+        monto: 0,
+        tipo: ''
+      }
+    },
      methods: {
       close() {
         this.$emit('close');
       },
+      save(){
+        var url = 'admin/storemovimiento';
+       
+        webServices.post(url, {
+           concepto: this.concepto,
+           monto: this.monto,
+           tipo: this.tipo,
+           caja_id : this.caja.id
+        }).then((res) => {
+        }).catch(error => {
+            this.errors = 'Corrija para poder crear con éxito'
+        });
+        this.limpiar();
+         this.close();
+         toastr.success('Movimiento Creado con éxito');   
+      },
+      limpiar(){
+         this.concepto= '',
+          this.monto= 0,
+          this.tipo=''
+      }
     }
 }
 </script>

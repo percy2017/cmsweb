@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Caja
     Route::get('showcaja/{caja}','Caja\SeatController@show')->name('showcaja');
+    Route::post('storemovimiento','Caja\SeatController@storemov');
     
 });
 

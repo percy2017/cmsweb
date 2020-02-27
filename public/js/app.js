@@ -2042,6 +2042,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _webServices__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../webServices */ "./resources/js/webServices/index.js");
 //
 //
 //
@@ -2073,10 +2074,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'movimientos',
+  props: ['caja'],
+  data: function data() {
+    return {
+      errors: [],
+      concepto: '',
+      monto: 0,
+      tipo: ''
+    };
+  },
   methods: {
     close: function close() {
       this.$emit('close');
+    },
+    save: function save() {
+      var _this = this;
+
+      var url = 'admin/storemovimiento';
+      _webServices__WEBPACK_IMPORTED_MODULE_0__["default"].post(url, {
+        concepto: this.concepto,
+        monto: this.monto,
+        tipo: this.tipo,
+        caja_id: this.caja.id
+      }).then(function (res) {})["catch"](function (error) {
+        _this.errors = 'Corrija para poder crear con éxito';
+      });
+      this.limpiar();
+      this.close();
+      toastr.success('Movimiento Creado con éxito');
+    },
+    limpiar: function limpiar() {
+      this.concepto = '', this.monto = 0, this.tipo = '';
     }
   }
 });
@@ -30316,6 +30366,7 @@ var render = function() {
                       expression: "isModalVisible"
                     }
                   ],
+                  attrs: { caja: _vm.caja },
                   on: { close: _vm.closeModal }
                 }),
                 _vm._v(" "),
@@ -30409,7 +30460,7 @@ var render = function() {
             { staticClass: "modal-header" },
             [
               _vm._t("header", [
-                _vm._v("\n            default header\n          ")
+                _vm._v("\n            Registrar nuevo movimiento\n          ")
               ])
             ],
             2
@@ -30419,7 +30470,114 @@ var render = function() {
             "div",
             { staticClass: "modal-body" },
             [
-              _vm._t("body", [_vm._v("\n            default body\n          ")])
+              _vm._t("body", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "tipo" } }, [
+                    _vm._v("Tipo de Movimiento")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tipo,
+                          expression: "tipo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.tipo = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("Seleccione")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        { attrs: { value: "INGRESO", selected: "" } },
+                        [_vm._v("INGRESO")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        { attrs: { value: "EGRESO", selected: "" } },
+                        [_vm._v("EGRESO")]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "concepto" } }, [
+                    _vm._v("Concepto")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.concepto,
+                        expression: "concepto"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.concepto },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.concepto = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "monto" } }, [_vm._v("Monto")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.monto,
+                        expression: "monto"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.monto },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.monto = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ])
             ],
             2
           ),
@@ -30429,19 +30587,28 @@ var render = function() {
             { staticClass: "modal-footer" },
             [
               _vm._t("footer", [
-                _vm._v("\n            default footer\n            "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "modal-default-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("close")
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "button",
+                    { staticClass: "btn btn-primary", on: { click: _vm.save } },
+                    [_vm._v("Registrar")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: {
+                        click: function($event) {
+                          return _vm.$emit("close")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("\n              OK\n            ")]
-                )
+                    },
+                    [_vm._v("\n              Cancelar\n            ")]
+                  )
+                ])
               ])
             ],
             2
@@ -42930,6 +43097,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_vue_vue_type_template_id_478d961c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/webServices/index.js":
+/*!*******************************************!*\
+  !*** ./resources/js/webServices/index.js ***!
+  \*******************************************/
+/*! exports provided: byMethod, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "byMethod", function() { return byMethod; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var sistema = process.env.APP_ENV;
+var ruta = ''; //verificamos si el sistema esta en produccion por las variables de entorno
+
+if (sistema === "production") {
+  var ruta = 'https://cmsweb.test/';
+} else {
+  ruta = 'http://cmsweb.test/';
+}
+
+var webService = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: ruta
+});
+function byMethod(method, url, data) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: method,
+    url: url,
+    data: data
+  });
+}
+/* harmony default export */ __webpack_exports__["default"] = (webService);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 

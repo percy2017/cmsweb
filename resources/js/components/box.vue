@@ -13,7 +13,7 @@
                 
               <div class="row">
                   <div class="col-md-6" >
-                      <modal
+                      <modal :caja="caja"
                         v-show="isModalVisible"
                         @close="closeModal"
                         />
