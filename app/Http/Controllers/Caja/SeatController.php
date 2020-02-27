@@ -8,6 +8,13 @@ use App\Caja;
 use App\Asiento;
 class SeatController extends Controller
 {
+    public function asientos_x_caja($id) {
+        
+      return Asiento::where('caja_id',$id)
+                              ->orderBy('id','desc')
+                              ->paginate();
+    }
+
     public function show (Caja $caja) {
         return view('caja.show', compact('caja'));
     }

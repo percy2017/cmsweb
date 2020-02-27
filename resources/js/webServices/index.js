@@ -1,12 +1,5 @@
 import axios from 'axios';
- var sistema = process.env.APP_ENV;
- var ruta = '';
- //verificamos si el sistema esta en produccion por las variables de entorno
-   if (sistema === "production") {
-       var ruta = 'https://cmsweb.test/'
-    }else{
-        ruta = 'http://cmsweb.test/'
-    }
+ var ruta = process.env.APP_URL;
 
 let webService = axios.create({
     baseURL: ruta

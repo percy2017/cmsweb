@@ -66,7 +66,7 @@ export default {
         this.$emit('close');
       },
       save(){
-        var url = 'admin/storemovimiento';
+        var url = '/admin/storemovimiento';
        
         webServices.post(url, {
            concepto: this.concepto,
