@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Vue from 'vue'
+import router from './router'
 // app.js
 
 /**
@@ -31,5 +32,6 @@ Vue.component('box', require('./components/box.vue').default);
  */
 
 const app = new Vue({
+    router,
     el: '#app',
 });
